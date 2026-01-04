@@ -7,20 +7,17 @@ import { useProgress } from '@react-three/drei';
 import loaderVideo from '../assets/images/artimages/flowerload.webm'; 
 // import loaderVideoWebM from '../assets/images/artimages/flower.webm'; // Falls du WebM brauchst
 
-const LoadingScreen = ({ onFinished }) => { 
-  const { progress } = useProgress();
+const LoadingScreen = () => {
+  const { progress } = useProgress(); // 0 bis 100
   const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
+    // Wenn alles geladen ist (100%), warte kurz und blende aus
     if (progress === 100) {
-      // Kleiner Delay für das Gefühl von Stabilität
-      const timer = setTimeout(() => {
-        setIsFinished(true);
-        if (onFinished) onFinished(); // Meldet der HomePage: "Ich bin fertig!"
-      }, 800); 
+      const timer = setTimeout(() => setIsFinished(true), 500); 
       return () => clearTimeout(timer);
     }
-  }, [progress, onFinished]);
+  }, [progress]);
 
   return (
     <AnimatePresence>
@@ -28,7 +25,7 @@ const LoadingScreen = ({ onFinished }) => {
         <motion.div
           key="simple-loader"
           // Exit Animation: Das Video blendet einfach weich aus
-          exit={{ opacity: 0, transition: { duration: 1 } }}
+          exit={{ opacity: 0, transition: { duration: 0.8 } }}
           style={{
             position: 'fixed',
             top: 0,
@@ -49,7 +46,7 @@ const LoadingScreen = ({ onFinished }) => {
              animate={{ opacity: 1, scale: 1 }}
              transition={{ duration: 0.5 }}
              style={{
-               width: '60vw', // Größe des Videos anpassen
+               width: '60vh', // Größe des Videos anpassen
                height: 'auto',
                display: 'flex',
                justifyContent: 'center',
