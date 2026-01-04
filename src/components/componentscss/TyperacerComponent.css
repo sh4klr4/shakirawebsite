@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Gajraj+One&display=swap');
+
+/* Container Reset mit tr- Präfix */
+.tr-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #f9f9f9; 
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin: 40px auto;
+  margin-top: 10vh;
+  transition: all 0.5s ease;
+  letter-spacing: 1px;
+  height: 60%; 
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.tr-container.tr-expanded {
+  height: auto; 
+}
+
+/* --- Hero Section --- */
+.tr-hero-wrapper {
+  width: 100%;
+  height: 50vh; 
+  overflow: hidden;
+  flex-shrink: 0; 
+}
+
+.tr-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+/* --- Content Area --- */
+.tr-content-area {
+  padding: 40px;
+  background-color: #fff;
+  flex-grow: 1; 
+}
+
+/* Header Grid Layout */
+.tr-header-row {
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 0.5fr; 
+  gap: 40px;
+  cursor: pointer;
+  align-items: flex-start;
+}
+
+.tr-titles h1 {
+  font-family: 'Gajraj One', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+
+.tr-subtitle {
+  font-size: 18px;
+  color: #999;
+  font-weight: 300;
+}
+
+.tr-intro-text p {
+  font-size: 16px;
+  color: #787878;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* --- Toggle Icon --- */
+.tr-toggle-icon {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tr-icon-bar {
+  position: absolute;
+  background-color: #000;
+  transition: transform 0.4s ease;
+}
+
+.tr-icon-bar.tr-horizontal { width: 100%; height: 2px; }
+.tr-icon-bar.tr-vertical { width: 2px; height: 100%; }
+
+.tr-container.tr-expanded .tr-icon-bar.tr-horizontal { transform: rotate(45deg); }
+.tr-container.tr-expanded .tr-icon-bar.tr-vertical { transform: rotate(45deg); }
+
+/* --- Expanded Content Animation --- */
+.tr-expanded-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease, opacity 0.5s ease;
+}
+
+.tr-container.tr-expanded .tr-expanded-details {
+  max-height: 2500px; 
+  opacity: 1;
+  margin-top: 60px;
+}
+
+/* --- UI Grid Layout (Zentriert) --- */
+.tr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;      /* Vertikale Zentrierung der Zellen */
+  justify-items: center;    /* Horizontale Zentrierung der Container */
+  width: 100%;
+}
+
+.tr-item {
+  width: 100%;              
+  display: flex;            
+  justify-content: center;  
+}
+
+.tr-item img {
+  width: 100%;             
+  max-width: 500px;         
+  height: auto;
+  display: block;
+  margin: 0 auto;           
+  border-radius: 12px;
+}
+
+.tr-text-block {
+  grid-column: span 2; 
+  font-size: 16px;
+  color: #787878;
+  line-height: 1.6;
+  text-align: left;
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .tr-header-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .tr-toggle-icon {
+    justify-self: start;
+  }
+
+  .tr-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tr-text-block {
+    grid-column: span 1;
+  }
+}

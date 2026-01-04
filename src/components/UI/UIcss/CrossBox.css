@@ -1,0 +1,36 @@
+.wireframe-container {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.wireframe-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible; /* Wichtig, falls wir den Rand nicht abschneiden wollen */
+}
+
+/* GEMEINSAME BASIS */
+.wireframe-rect,
+.wireframe-line {
+  stroke: #787878;
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+/* 1. DER RAHMEN (Außen) */
+.wireframe-rect {
+  /* Wir lassen ihn auf 1px (oder sogar 1.5px, um den Beschnitt auszugleichen) */
+  stroke-width: 1px; 
+}
+
+/* 2. DAS KREUZ (Innen) */
+.wireframe-line {
+  /* FIX: Wir machen das Kreuz explizit dünner! */
+  stroke-width: 1px; 
+  /* Optional: Mach es etwas heller, damit es noch feiner wirkt */
+  opacity: 0.8;
+}

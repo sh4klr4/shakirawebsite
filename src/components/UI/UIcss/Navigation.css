@@ -1,0 +1,149 @@
+/* components/UI/Navigation.css */
+@import url('https://fonts.googleapis.com/css2?family=Ballet&display=swap');
+
+/* --- Main Container --- */
+.nav-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
+    pointer-events: none; 
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.nav-layer.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- Navigation Text (The Buttons) --- */
+.nav-text {
+    position: absolute;
+    z-index: 12;
+    padding: 40px;
+    font-size: 3em;
+    cursor: pointer;
+    pointer-events: auto;
+    color: #787878;
+    will-change: color, font-variation-settings, text-shadow;
+    transition: color 0.3s, text-shadow 0.3s ease, font-variation-settings 0.3s ease;
+}
+
+.nav-text.active {
+    color: #b00000;
+    font-variation-settings: "wght" 200;
+}
+
+/* Specific Positions */
+#art-nav  { top: 7%; left: 7%; letter-spacing: 3px;}
+#code-nav { top: 7%; right: 7%; letter-spacing: 3px;}
+#info-nav { bottom: 7%; left: 7%; letter-spacing: 3px;}
+#uiux-nav { bottom: 7%; right: 7%; letter-spacing: 3px;}
+
+/* Name (Center Bottom) */
+/* In components/UI/Navigation.css */
+
+#name-nav {
+    /* CHANGED: Use absolute so it's ready to scroll with the page */
+    position: absolute; 
+    
+    /* These start positions are correct for the homepage view */
+    top: 91%; 
+    left: 48%;
+    transform: translate(-50%, -50%) scale(0.3);
+
+    pointer-events: auto;
+    cursor: default;          
+    white-space: nowrap;     
+
+    /* ... rest of your font styles ... */
+    font-family: 'Edwardian Script', cursive;
+    color: #b00000;
+    font-size: 20em; 
+    z-index: 100;
+    
+    /* IMPORTANT: Ensure NO transition on 'top' or 'position' to prevent lag */
+    transition: color 0.3s ease, opacity 0.3s ease;
+    will-change: top, transform; 
+}
+
+/* REMOVED: #name-nav:hover block (Name will no longer change color on hover) */
+
+/* --- Hover Boxes (The Glass Cards) --- */
+.hover-box {
+    position: absolute;
+    width: 22%;
+    height: 22%;
+    padding: 15px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    color: #787878;
+    font-size: 1.1em;
+    line-height: 1.4em; 
+    pointer-events: none; 
+    letter-spacing: 3px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px); 
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.faded-out {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.5s ease;
+}
+
+.hover-box p {
+    margin: 0;
+}
+
+.hover-box.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- Specific Box Styles --- */
+#art-box {
+    top: 10%; left: 8%; 
+    text-align: right; 
+    align-content: end;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+#code-box {
+    top: 10%; right: 8%; 
+    align-content: end;
+    background: linear-gradient(225deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+#info-box {
+    bottom: 10%; left: 8%; 
+    text-align: right;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+#uiux-box {
+    bottom: 10%; right: 8%;
+    background: linear-gradient(315deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+}

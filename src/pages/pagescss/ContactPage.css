@@ -1,0 +1,130 @@
+.contact-page-container {
+    /* 1. Benutze FIXED. Das nagelt die Seite fest. Kein Scrollen möglich. */
+    position: fixed; 
+    top: 0;
+    left: 0;
+
+    /* 2. Repariere die Breite und Höhe */
+    width: 100vw; /* Volle Bildschirmbreite */
+    height: 100vh; /* Volle Bildschirmhöhe */
+    
+    /* 3. Verstecke alles, was rausgucken würde */
+    overflow: hidden; 
+
+    /* 4. Damit es über dem 3D Model liegt */
+    z-index: 50; 
+}
+
+/* --- FOOTER POSITIONING --- */
+/* Wir erstellen einen Wrapper um den Footer, um ihn nach unten zu zwingen */
+.contact-footer-wrapper {
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    width: 100%;
+    z-index: 20; /* Über anderen Elementen */
+    
+    /* Optional: Footer etwas nach unten schieben, falls er zu hoch ist */
+    transform: translateY(20px); 
+}
+
+/* --- THE FORM WRAPPER (Left Side) --- */
+.form-wrapper {
+    position: absolute;
+    left: 6%;            
+    top: 55%; /* Center vertically based on screen center */
+    transform: translateY(-55%); /* Pull it up slightly to balance with footer */
+    width: 26%; /* Etwas breiter gemacht für bessere Lesbarkeit */
+    z-index: 10;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-heading {
+    color: #787878;
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.glass-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Etwas mehr Abstand */
+}
+
+/* --- INPUTS & BUTTONS --- */
+.glass-input, 
+.glass-button {
+    width: 100%;             
+    box-sizing: border-box;  
+    margin: 0;              
+}
+
+.glass-input {
+    padding: 15px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+    
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Reduziere die Höhe des Textarea etwas, damit es besser auf 100vh passt */
+textarea.glass-input {
+    resize: none; /* Verhindert manuelles Vergrößern */
+    height: 120px; /* Feste Höhe statt rows="10" */
+}
+
+.glass-button {
+    padding: 15px;
+    margin-top: 5px; 
+    
+    background: #d8a4bb;
+    color: white;
+    border: none; 
+    border-radius: 12px;
+    
+    font-family: 'Inter', sans-serif; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+    box-shadow: 0 5px 15px rgba(216, 164, 187, 0.4);
+}
+
+.glass-button:hover {
+    background: #c08b9f;
+    transform: translateY(-2px);
+}
+
+.glass-button:active {
+    transform: translateY(0);
+}
+
+.glass-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none;
+}
+
+.emaillink{
+    color: #b00000;
+    font-size: 2rem;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 30px;
+}

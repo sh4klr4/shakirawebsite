@@ -1,0 +1,166 @@
+
+
+/* --- KEEP YOUR SCENE & OBJECT SETTINGS (Do not change these) --- */
+.card-scene {
+    position: absolute; right: 6%; top: 31%;
+    width: 400px; /* Made slightly wider to fit long name */
+    height: 250px;
+    perspective: 1000px;
+    z-index: 10;
+}
+
+.card-object {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin 8s infinite linear;
+    transform-origin: center center;
+}
+
+.card-scene:hover .card-object { animation-play-state: paused; }
+
+/* --- THE MISSING ANIMATION ENGINE --- */
+@keyframes spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+/* --- FACE STYLING (Glassmorphism retained) --- */
+.personcard.face {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    top: 0;   
+    left: 0;      
+    margin: 0;
+    
+    /* Layout Logic for the new design */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes Top/Bottom rows to edges */
+    padding: 25px; /* Generous padding like the image */
+    box-sizing: border-box;
+    
+    /* Your Glass Styles */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* --- FRONT FACE LAYOUT --- */
+.face.front { z-index: 2; transform: rotateY(0deg); }
+
+/* Top & Bottom Rows */
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.small-label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 300;
+}
+
+/* Middle Section */
+.card-main-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-photo {
+    width: 85px;
+    height: 120px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.card-name {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0 0 5px 0;
+    color: #111;
+    line-height: 1.2;
+}
+
+.card-role {
+    font-size: 0.75rem;
+    color: #555;
+    margin: 2px 0;
+    font-weight: 400;
+}
+
+/* --- BACK FACE LAYOUT --- */
+.face.back {
+    transform: rotateY(180deg);
+    /* Back uses different padding to handle the magnetic strip */
+    padding: 0; 
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.magnetic-strip {
+    width: 100%;
+    height: 40px;
+    background: #000;
+    margin-top: 25px; /* Space from top edge */
+}
+
+.back-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.signature {
+    font-family: 'Edwardian Script', cursive; /* Elegant script font */
+    font-size: 3rem;
+    color: #000;
+}
+
+.divider-line {
+    width: 100%;
+    height: 1px;
+    background: #333;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    font-size: 0.6rem;
+    color: #666;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.back-footer {
+    width: 100%;
+    text-align: center;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    padding-bottom: 25px;
+    color: #333;
+    font-weight: 300;
+}

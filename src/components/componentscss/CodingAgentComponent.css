@@ -1,0 +1,172 @@
+/* Container Reset mit ca- Präfix */
+.ca-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #f9f9f9; 
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin: 40px auto;
+  transition: all 0.5s ease;
+  letter-spacing: 1px;
+  height: 60%; 
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.ca-container.ca-expanded {
+  height: auto; 
+}
+
+/* --- Hero Section --- */
+.ca-hero-wrapper {
+  width: 100%;
+  height: 50vh; 
+  overflow: hidden;
+  flex-shrink: 0; 
+}
+
+.ca-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+/* --- Content Area --- */
+.ca-content-area {
+  padding: 40px;
+  background-color: #fff;
+  flex-grow: 1; 
+}
+
+/* Header Grid Layout */
+.ca-header-row {
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 0.5fr; 
+  gap: 40px;
+  cursor: pointer;
+  align-items: flex-start;
+}
+
+.ca-titles h1 {
+  font-family: 'Helvetica Bold', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.ca-subtitle {
+  font-size: 18px;
+  color: #999;
+  font-weight: 300;
+}
+
+.ca-intro-text p {
+  font-size: 16px;
+  color: #787878;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* --- Toggle Icon --- */
+.ca-toggle-icon {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ca-icon-bar {
+  position: absolute;
+  background-color: #000;
+  transition: transform 0.4s ease;
+}
+
+.ca-icon-bar.ca-horizontal { width: 100%; height: 2px; }
+.ca-icon-bar.ca-vertical { width: 2px; height: 100%; }
+
+.ca-container.ca-expanded .ca-icon-bar.ca-horizontal { transform: rotate(45deg); }
+.ca-container.ca-expanded .ca-icon-bar.ca-vertical { transform: rotate(45deg); }
+
+/* --- Expanded Content Animation --- */
+.ca-expanded-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease, opacity 0.5s ease;
+}
+
+.ca-container.ca-expanded .ca-expanded-details {
+  max-height: 2500px; 
+  opacity: 1;
+  margin-top: 60px;
+}
+
+/* --- UI Grid Layout (Zentriert) --- */
+.ca-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;      /* Vertikale Zentrierung der Zellen */
+  justify-items: center;    /* Horizontale Zentrierung der .ca-item Container */
+  width: 100%;
+}
+
+.ca-item {
+  width: 100%;              /* Der Container füllt die Grid-Zelle */
+  display: flex;            /* Flexbox hilft zusätzlich beim Zentrieren */
+  justify-content: center;  /* Zentriert das Bild horizontal im Container */
+}
+
+.ca-item img {
+  /* Größe anpassen */
+  width: 100%;             
+  max-width: 400px;         /* Deine gewünschte Größe */
+  
+  height: auto;
+  display: block;
+  
+  /* Das magische Duo für Block-Elemente: */
+  margin: 0 auto;           
+  
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.ca-text-block {
+  grid-column: span 2; 
+  font-size: 16px;
+  color: #787878;
+  line-height: 1.6;
+  text-align: left;
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .ca-header-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .ca-toggle-icon {
+    justify-self: start;
+  }
+
+  .ca-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ca-text-block {
+    grid-column: span 1;
+  }
+}

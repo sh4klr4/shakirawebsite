@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;700&display=swap');
+
+@font-face {
+  font-family: 'Edwardian Script';
+  src: url('./assets/fonts/edwardianscriptitc.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Bold';
+  src: url('./assets/fonts/Helvetica/Helvetica-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pixeloid Sans';
+  src: url('./assets/fonts/Helvetica/PixeloidSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ---------------- BASIS LAYOUT ---------------- */
+/* HTML muss scrollbar sein, damit window.scrollY funktioniert */
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden; 
+    overflow-y: auto; /* Vertikales Scrollen erlauben */
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+}
+
+/*this is for the model head*/
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: transparent !important;
+    outline: none;
+    touch-action: none;
+}
+
+
+
+
+
+
+
+

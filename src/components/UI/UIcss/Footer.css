@@ -1,0 +1,44 @@
+/* Container */
+.global-footer {
+    width: 100%;
+    padding: 0 0 30px 0; /* Top/Bottom padding */
+    text-align: center;
+    background-color: transparent; 
+    position: relative;
+    z-index: 100;
+    clear: both; /* Ensures it sits below floated elements */
+}
+
+/* "Contact Me" Script Text */
+.footer-contact-link {
+    font-family: 'Edwardian Script ITC', 'Ballet', cursive; /* Matches your Name/Brand font */
+    font-size: 4rem; /* Large and elegant */
+    margin-right: 1vh;
+    line-height: 1;
+    color: #b00000; 
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    
+    /* Optional: Disable text selection for better UI feel */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.footer-contact-link:hover {
+    color: #b00000; /* Dark Grey on hover */
+    transform: scale(1.05); /* Subtle grow effect */
+}
+
+/* Copyright Info */
+.footer-copyright {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: #787878; /* Muted grey */
+    line-height: 1.2;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+
+.footer-copyright p {
+    margin: 0;
+}

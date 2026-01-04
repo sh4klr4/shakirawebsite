@@ -1,0 +1,34 @@
+#dynamic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 200vh;
+    z-index: -2;
+    background-color: #f0f0f0; /* Hier ist die eigentliche Hintergrundfarbe */
+    overflow: hidden;
+}
+
+/* Das zentrale Element, das nun den Hintergrund füllt und animiert wird */
+#dynamic-element {
+    position: absolute;
+    width: 150vw; /* Noch größer (200% der Viewport-Breite) */
+    height: 150vh; /* Verhindert, dass die Ränder abgeschnitten werden */
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Zentrierung beibehalten */
+
+    /* WICHTIG: border-radius: 50% entfernen! */
+
+    /* Der Kern-Gradient-Effekt */
+    background: radial-gradient(
+        /* Platziere den hellsten Punkt leicht außerhalb der Mitte */
+            circle at 60% 60%,
+
+            rgba(255, 192, 203, 0.5) 4%,   /* Pink-Glühen (Startfarbe) */
+            rgba(255, 255, 255, 0.0) 40%   /* Läuft schneller ins Transparente aus */
+    );
+
+    filter: brightness(1.2);
+}

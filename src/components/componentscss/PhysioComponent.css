@@ -1,0 +1,172 @@
+.physio-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #f9f9f9; 
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin: 40px auto;
+  transition: all 0.5s ease;
+  letter-spacing: 1px;
+  
+  height: 80%; 
+  display: flex;
+  flex-direction: column;
+  cursor: pointer; /* NEU: Zeiger für die gesamte Karte */
+}
+
+/* Wenn expanded ist, soll die Höhe "automatisch" wachsen */
+.physio-container.expanded {
+  height: auto; 
+}
+
+/* --- Hero Section --- */
+.hero-image-wrapper {
+  width: 100%;
+  /* --- NEU: Hero ist jetzt 60vh hoch --- */
+  height: 50vh; 
+  overflow: hidden;
+  background-color: #e0e0e0;
+  flex-shrink: 0; /* Verhindert, dass das Bild schrumpft */
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Wichtig: Bild füllt den Bereich ohne Verzerren */
+  display: block;
+}
+
+/* --- Content Area --- */
+.content-area {
+  padding: 40px;
+  background-color: #fff;
+  flex-grow: 1; /* Füllt den Rest der 85vh aus */
+}
+
+/* ... (Der Rest deines CSS für .header-row, .expanded-details usw. bleibt gleich) ... */
+
+/* Header Grid Layout */
+.header-row {
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 0.5fr; 
+  gap: 40px;
+  cursor: pointer;
+  align-items: flex-start;
+}
+/* ... etc ... */
+
+
+.titles h1 {
+    font-family: 'Helvetica Bold';
+  font-size: 48px;
+  line-height: 1;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #999;
+  font-weight: 300;
+}
+
+.intro-text p {
+  font-size: 16px;
+  color: #787878;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* --- Toggle Icon --- */
+.toggle-icon {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-bar {
+  position: absolute;
+  background-color: #000;
+  transition: transform 0.4s ease;
+}
+
+.icon-bar.horizontal { width: 100%; height: 2px; }
+.icon-bar.vertical { width: 2px; height: 100%; }
+
+.physio-container.expanded .icon-bar.horizontal { transform: rotate(45deg); }
+.physio-container.expanded .icon-bar.vertical { transform: rotate(45deg); }
+
+/* --- Expanded Content Animation --- */
+.expanded-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease, opacity 0.5s ease;
+}
+
+.physio-container.expanded .expanded-details {
+  max-height: 2500px; /* Increased slightly to accommodate video */
+  opacity: 1;
+  margin-top: 60px;
+}
+
+/* --- UI Grid Layout --- */
+.ui-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.ui-item img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: block;
+}
+
+.ui-text-block {
+  display: flex;
+  align-items: top;
+}
+
+.ui-text-block p {
+  font-size: 16px;
+  color: #787878;
+  line-height: 1.6;
+}
+
+/* --- Video Wrapper (Simplified) --- */
+.video-wrapper {
+  width: 100%;
+  max-width: 1000px; /* Restrict max width so it doesn't get too huge */
+  margin: 0 auto;    /* Center it */
+}
+
+.full-width-video {
+  width: 100%;
+  display: block;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .header-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .toggle-icon {
+    justify-self: start;
+  }
+
+  .ui-grid {
+    grid-template-columns: 1fr;
+  }
+}

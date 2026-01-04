@@ -1,0 +1,65 @@
+/* cross.css */
+
+/* ---------------- Cross Settings ---------------- */
+
+/* Container for all crosses */
+.cross {
+    position: fixed;
+    width: 6vmin;
+    height: 6vmin;
+    pointer-events: none; /* By default, clicks pass through */
+    z-index: 100;
+}
+
+/* Placement of the 4 crosses */
+#cross-tl {
+    top: 4%;
+    left: 4%;
+
+    pointer-events: none; /* Initially not clickable */
+    cursor: default;
+
+    transition: transform 0.3s ease-out;
+    z-index: 100; /* High z-index to sit on top of everything */
+}
+
+/* --- THIS IS THE IMPORTANT CHANGE --- */
+#cross-tl.is-closed {
+    color: #b00000;
+    
+    /* ADD THESE TWO LINES: */
+    pointer-events: auto; /* Makes it clickable when active! */
+    cursor: pointer;      /* Shows the hand icon */
+}
+
+#cross-tl.is-closed::before,
+#cross-tl.is-closed::after {
+    /* Change color to dark grey when active */
+    background-color: #b00000;
+}
+
+#cross-tr { top: 4%; right: 4%; }
+#cross-bl { bottom: 4%; left: 4%; }
+#cross-br { bottom: 4%; right: 4%; }
+
+
+/* Definition of the lines (stays exactly the same) */
+.cross::before, .cross::after {
+    content: '';
+    position: absolute;
+    background-color: #b00000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease-out;
+}
+
+.cross::before { /* Horizontal Line */
+    width: 100%;
+    height: 1.5px;
+}
+
+.cross::after { /* Vertical Line */
+    width: 1.5px;
+    height: 100%;
+}
