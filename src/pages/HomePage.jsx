@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Background from '../components/Background';
 import MainScene from '../components/Model3D/MainScene';
 import Navigation from '../components/UI/Navigation';
@@ -15,98 +16,103 @@ import IDCard from '../components/IDCard';
 import flowertransparent from '../assets/images/artimages/flowertransparent.webm';
 
 const HomePage = () => {
-  // 1. STATE
   const [currentSection, setCurrentSection] = useState(null);
+  const [isAppReady, setIsAppReady] = useState(false);
 
-  // --- NEW: HANDLE BROWSER HISTORY (SWIPE BACK) ---
   useEffect(() => {
-    // A. Listen for the "Back" button or Swipe
     const handlePopState = () => {
-      // If the URL has no hash (e.g. "mysite.com"), go to Home
       if (!window.location.hash) {
         setCurrentSection(null);
       } else {
-        // If URL is "mysite.com/#art", keep the section open
         const section = window.location.hash.replace('#', '');
         setCurrentSection(section);
       }
     };
-
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // 2. ACTIONS
   const handleNavigation = (section) => {
-    console.log("Navigating to:", section);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setCurrentSection(section);
-    
-    // Push the new section to browser history so "Back" works
     window.history.pushState(null, '', `#${section}`);
   };
 
   const handleClose = () => {
-    console.log("Closing section");
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setCurrentSection(null);
-    
-    // Clean up the URL when closing manually
     window.history.pushState(null, '', ' '); 
   };
 
   return (
     <>
-      {/* 1. Hintergrund: Ist sofort sichtbar */}
+      {/* 1. Hintergrund & 3D Szene müssen IMMER da sein, damit sie laden können */}
       <Background />
-
-      {/* 2. Loader: Liegt darüber, ist aber transparent (bis auf das Video) */}
-      <LoadingScreen />
-
-      {/* 3. 3D Szene: Lädt im Hintergrund. 
-          Der Loader oben verschwindet erst, wenn HIER alles fertig ist. 
+      
+      {/* WICHTIG: MainScene ist außerhalb von AnimatePresence.
+          Wir steuern die Sichtbarkeit über CSS (opacity), 
+          damit sie im Hintergrund lädt, aber erst erscheint, wenn bereit.
       */}
-      <Suspense fallback={null}>
-        <MainScene />
-      </Suspense>
+      <div style={{ 
+        opacity: isAppReady ? 1 : 0, 
+        transition: 'opacity 1.5s ease-in-out',
+        position: 'absolute',
+        width: '100%',
+        height: '100%'
+      }}>
+        <Suspense fallback={null}>
+          <MainScene />
+        </Suspense>
+      </div>
 
-      {/* UI Layer ... */}
-      <Navigation onNavigate={handleNavigation} currentSection={currentSection} />
-      <Crosses currentSection={currentSection} onClose={handleClose} />
+      {/* 2. Loader meldet, wenn die Szene (die oben gerade lädt) fertig ist */}
+      <LoadingScreen onFinished={() => setIsAppReady(true)} />
 
-      {/* --- CONTENT LAYER --- */}
-      {currentSection === 'art' && (
-        <>
-           <ArtPage />
-           {/* Footer wird unter ArtPage gerendert */}
-           <Footer onNavigate={handleNavigation} />
-        </>
-      )}
-      
-      {currentSection === 'code' && (
-        <>
-           <CodePage />
-           <Footer onNavigate={handleNavigation} />
-        </>
-      )}
-      
-      {currentSection === 'info' && (
-        <>
-           <InfoPage />
-           <Footer onNavigate={handleNavigation} />
-        </>
-      )}
-      
-      {currentSection === 'uiux' && (
-         <>
-           <UIUXPage />
-           <Footer onNavigate={handleNavigation} />
-         </>
-      )}
-      
-      {currentSection === 'contact' && (
-          <ContactPage onNavigate={handleNavigation} />
-      )}
+      {/* 3. NUR die UI-Elemente werden erst gerendert, wenn isAppReady true ist */}
+      <AnimatePresence>
+        {isAppReady && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          >
+            {/* UI Layer */}
+            <Navigation onNavigate={handleNavigation} currentSection={currentSection} />
+            <Crosses currentSection={currentSection} onClose={handleClose} />
+            
+            {/* --- CONTENT LAYER --- */}
+            {currentSection === 'art' && (
+              <>
+                <ArtPage />
+                {/* Footer wird unter ArtPage gerendert */}
+                <Footer onNavigate={handleNavigation} />
+              </>
+            )}
+            
+            {currentSection === 'code' && (
+              <>
+                <CodePage />
+                <Footer onNavigate={handleNavigation} />
+              </>
+            )}
+            
+            {currentSection === 'info' && (
+              <>
+                <InfoPage />
+                <Footer onNavigate={handleNavigation} />
+              </>
+            )}
+            
+            {currentSection === 'uiux' && (
+              <>
+                <UIUXPage />
+                <Footer onNavigate={handleNavigation} />
+              </>
+            )}
+            
+            {currentSection === 'contact' && (
+                <ContactPage onNavigate={handleNavigation} />
+            )}
 
       {/* --- HOMEPAGE CONTENT --- */}
       {!currentSection && (
@@ -144,7 +150,9 @@ const HomePage = () => {
             <Footer onNavigate={handleNavigation} />
         </div>
       )}
-
+        </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -7,17 +7,20 @@ import { useProgress } from '@react-three/drei';
 import loaderVideo from '../assets/images/artimages/flowerload.webm'; 
 // import loaderVideoWebM from '../assets/images/artimages/flower.webm'; // Falls du WebM brauchst
 
-const LoadingScreen = () => {
-  const { progress } = useProgress(); // 0 bis 100
+const LoadingScreen = ({ onFinished }) => { 
+  const { progress } = useProgress();
   const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
-    // Wenn alles geladen ist (100%), warte kurz und blende aus
     if (progress === 100) {
-      const timer = setTimeout(() => setIsFinished(true), 500); 
+      // Kleiner Delay für das Gefühl von Stabilität
+      const timer = setTimeout(() => {
+        setIsFinished(true);
+        if (onFinished) onFinished(); // Meldet der HomePage: "Ich bin fertig!"
+      }, 800); 
       return () => clearTimeout(timer);
     }
-  }, [progress]);
+  }, [progress, onFinished]);
 
   return (
     <AnimatePresence>
@@ -46,8 +49,8 @@ const LoadingScreen = () => {
              animate={{ opacity: 1, scale: 1 }}
              transition={{ duration: 0.5 }}
              style={{
-               width: '500px', // Größe des Videos anpassen
-               height: '500px',
+               width: '60vw', // Größe des Videos anpassen
+               height: 'auto',
                display: 'flex',
                justifyContent: 'center',
                alignItems: 'center'
