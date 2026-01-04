@@ -12,7 +12,8 @@ import UIUXPage from './UIUXPage';
 import ContactPage from './ContactPage';
 import Footer from '../components/UI/Footer';
 import IDCard from '../components/IDCard';
-import flowertransparent from '../assets/images/artimages/flowertransparent.webm';
+import flowerMov from '../assets/images/artimages/flowertransparent.mp4';
+import flowerWebm from '../assets/images/artimages/flowertransparent.webm';
 
 const HomePage = () => {
   // 1. STATE
@@ -138,7 +139,11 @@ const HomePage = () => {
               mixBlendMode: 'screen'
             }}
           >
-            <source src={flowertransparent} type="video/webm" />
+              {/* 1. Safari/iOS (HEVC) */}
+              <source src={flowerMov} type='video/mp4; codecs="hvc1"' />
+              
+              {/* 2. Chrome/Firefox (WebM) */}
+              <source src={flowerWebm} type="video/webm" />
           </video>
       </div>
             <IDCard top='120vh'right='12%'/>
