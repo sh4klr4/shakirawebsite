@@ -61,7 +61,7 @@ const LoadingScreen = () => {
                playsInline 
                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
              >
-               <source src={loaderVideoMov} type='"video/mp4; codecs="hvc1"' />
+               <source src={loaderVideoMov} type='video/mp4; codecs="hvc1"' />
                <source src={loaderVideoWebM} type="video/webm" />
              </video>
           </motion.div>

@@ -49,31 +49,29 @@
 /* In components/UI/Navigation.css */
 
 #name-nav {
-    /* CHANGED: Use absolute so it's ready to scroll with the page */
     position: absolute; 
-    min-width: 1.2em; /* Oder ein fester Wert, der sicher breiter als der Name ist */
-    text-align: center;
-    /* These start positions are correct for the homepage view */
     top: 91%; 
-    left: 49%;
+    left: 48%;
     transform: translate(-50%, -50%) scale(0.3);
 
     pointer-events: auto;
     cursor: default;          
     white-space: nowrap;     
 
-    /* ... rest of your font styles ... */
     font-family: 'Edwardian Script', cursive;
     color: #b00000;
     font-size: 20em; 
     z-index: 100;
     
-    /* IMPORTANT: Ensure NO transition on 'top' or 'position' to prevent lag */
+    /* SAFARI ALPHA-FIX (RECHTS ABSCHNITTEN) */
+    display: inline-block;    /* Ermöglicht saubere Breitenberechnung */
+    padding-right: 60px;      /* Massiver Puffer für das 'L' am Ende */
+    padding-left: 20px;       /* Puffer für den Anfangsbuchstaben */
+    overflow: visible;        /* Verhindert das harte Clipping */
+    text-rendering: optimizeLegibility; /* Hilft Safari beim Font-Rendering */
+
     transition: color 0.3s ease, opacity 0.3s ease;
-    will-change: top, transform; 
-    padding-right: 20px; /* Gibt dem letzten Buchstaben Platz zum Ausschwingen */
-    display: inline-block; /* Wichtig, damit das Padding korrekt auf die Breite wirkt */
-    overflow: visible !important;
+    will-change: transform; 
 }
 
 /* REMOVED: #name-nav:hover block (Name will no longer change color on hover) */
