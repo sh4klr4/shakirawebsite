@@ -21,9 +21,9 @@ const CodePage = () => {
           and its reconstruction into a clean solution.
         </BlurFadeWrapper>
 
-        <div className='description-caption-rb'>
+        <BlurFadeWrapper className='description-caption-rb'>
           [Website made with React & Three]
-        </div>
+        </BlurFadeWrapper>
       </div>
       {/* Content Wrapper - startet nach 100vh */}
       <CodingAgentComponent/>

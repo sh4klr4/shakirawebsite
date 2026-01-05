@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // --- BILD IMPORTE (unverändert) ---
-import Azure from '../assets/images/skilllogo/Azure.png';
+import Unity from '../assets/images/skilllogo/unity.png';
 import Blender from '../assets/images/skilllogo/Blender.png';
 import C from '../assets/images/skilllogo/C.png';
 import Csharp from '../assets/images/skilllogo/Csharp.png';
@@ -33,7 +33,7 @@ const SkillGrid = () => {
     { name: 'CSS', img: css },
     { name: 'JavaScript', img: JavaScript },
     { name: 'TypeScript', img: TypeScript },
-    { name: 'Azure', img: Azure },
+    { name: 'Unity', img: Unity },
     { name: 'Github', img: Github },
     { name: 'Figma', img: Figma },
     { name: 'Blender', img: Blender },

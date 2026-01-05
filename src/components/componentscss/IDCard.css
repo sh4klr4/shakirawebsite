@@ -2,22 +2,26 @@
 
 /* --- KEEP YOUR SCENE & OBJECT SETTINGS (Do not change these) --- */
 .card-scene {
-    position: absolute; right: 6%; top: 31%;
-    width: 400px; /* Made slightly wider to fit long name */
+    position: absolute;
+    width: 400px;
     height: 250px;
-    perspective: 1000px;
+    perspective: 1200px; /* Erhöht für tieferen 3D-Effekt */
     z-index: 10;
 }
 
 .card-object {
-    width: 100%; height: 100%;
+    width: 100%; 
+    height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    animation: spin 8s infinite linear;
-    transform-origin: center center;
+    /* Wir entfernen 'animation: spin' hier komplett! */
+    will-change: transform;
 }
 
-.card-scene:hover .card-object { animation-play-state: paused; }
+.card-object.is-snapping {
+    animation: none;
+}
+
 
 /* --- THE MISSING ANIMATION ENGINE --- */
 @keyframes spin {
@@ -32,7 +36,6 @@
     top: 0;   
     left: 0;      
     margin: 0;
-    
     /* Layout Logic for the new design */
     display: flex;
     flex-direction: column;
@@ -56,6 +59,9 @@
 
 /* --- FRONT FACE LAYOUT --- */
 .face.front { z-index: 2; transform: rotateY(0deg); }
+.face.back {
+    transform: rotateY(180deg);
+}
 
 /* Top & Bottom Rows */
 .card-row {

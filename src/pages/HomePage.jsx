@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
+import { motion } from 'framer-motion';
 import Background from '../components/Background';
 import MainScene from '../components/Model3D/MainScene';
 import Navigation from '../components/UI/Navigation';
@@ -18,6 +19,7 @@ import flowerWebm from '../assets/images/artimages/flowertransparent.webm';
 const HomePage = () => {
   // 1. STATE
   const [currentSection, setCurrentSection] = useState(null);
+  const [showUI, setShowUI] = useState(false);
 
   // --- NEW: HANDLE BROWSER HISTORY (SWIPE BACK) ---
   useEffect(() => {
@@ -40,7 +42,7 @@ const HomePage = () => {
   // 2. ACTIONS
   const handleNavigation = (section) => {
     console.log("Navigating to:", section);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
     setCurrentSection(section);
     
     // Push the new section to browser history so "Back" works
@@ -49,7 +51,7 @@ const HomePage = () => {
 
   const handleClose = () => {
     console.log("Closing section");
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
     setCurrentSection(null);
     
     // Clean up the URL when closing manually
@@ -58,99 +60,79 @@ const HomePage = () => {
 
   return (
     <>
-      {/* 1. Hintergrund: Ist sofort sichtbar */}
+      {/* 1. Loader: Meldet über onFinished, wenn er weg ist */}
+      <LoadingScreen onFinished={() => setShowUI(true)} />
+
+      {/* 2. Hintergrund & 3D Szene: Rendern immer (laden im Hintergrund) */}
       <Background />
-
-      {/* 2. Loader: Liegt darüber, ist aber transparent (bis auf das Video) */}
-      <LoadingScreen />
-
-      {/* 3. 3D Szene: Lädt im Hintergrund. 
-          Der Loader oben verschwindet erst, wenn HIER alles fertig ist. 
-      */}
       <Suspense fallback={null}>
         <MainScene />
       </Suspense>
 
-      {/* UI Layer ... */}
-      <Navigation onNavigate={handleNavigation} currentSection={currentSection} />
-      <Crosses currentSection={currentSection} onClose={handleClose} />
+      {/* 3. UI LAYER: Erscheint erst, wenn showUI true ist */}
+      {showUI && (
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 1 }}
+        >
+          <Navigation onNavigate={handleNavigation} currentSection={currentSection} />
+          <Crosses currentSection={currentSection} onClose={handleClose} />
 
-      {/* --- CONTENT LAYER --- */}
-      {currentSection === 'art' && (
-        <>
-           <ArtPage />
-           {/* Footer wird unter ArtPage gerendert */}
-           <Footer onNavigate={handleNavigation} />
-        </>
-      )}
-      
-      {currentSection === 'code' && (
-        <>
-           <CodePage />
-           <Footer onNavigate={handleNavigation} />
-        </>
-      )}
-      
-      {currentSection === 'info' && (
-        <>
-           <InfoPage />
-           <Footer onNavigate={handleNavigation} />
-        </>
-      )}
-      
-      {currentSection === 'uiux' && (
-         <>
-           <UIUXPage />
-           <Footer onNavigate={handleNavigation} />
-         </>
-      )}
-      
-      {currentSection === 'contact' && (
-          <ContactPage onNavigate={handleNavigation} />
-      )}
+          {/* Content Layer (ArtPage, CodePage etc.) */}
+          {currentSection === 'art' && (
+            <>
+              <ArtPage />
+              <Footer onNavigate={handleNavigation} />
+            </>
+          )}
+          
+          {currentSection === 'info' && (
+            <>
+              <InfoPage />
+              <Footer onNavigate={handleNavigation} />
+            </>
+          )}
 
-      {/* --- HOMEPAGE CONTENT --- */}
-      {!currentSection && (
-        <div style={{  width: '100%' }}>
-            <div style={{ height: '155vh' }}></div>
+          {currentSection === 'code' && (
+            <>
+              <CodePage />
+              <Footer onNavigate={handleNavigation} />
+            </>
+          )}
 
-      {/* VIDEO CONTAINER: Absolut positioniert */}
-      <div 
-        style={{ 
-          width: '500px',        // Deine gewünschte Breite
-          height: '500px',       // Deine gewünschte Höhe
-          overflow: 'hidden',    // WICHTIG: Alles was übersteht, wird abgeschnitten
-          position: 'absolute',  // Deine Positionierung von vorhin
-          top: '105vh',
-          left: '15%',
-          zIndex: '50',
-        }}
-      >   
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline 
-            style={{ 
-              width: '100%', 
-              height: '100%', 
-              objectFit: 'cover',   // Füllt die Box komplett aus
-              transform: 'scale(1.5)',// WICHTIG: Zoomt rein (1.5 = 150%). 
-              mixBlendMode: 'screen'
-            }}
-          >
-              {/* 1. Safari/iOS (HEVC) */}
-              <source src={flowerMov} type='video/mp4; codecs="hvc1"' />
-              
-              {/* 2. Chrome/Firefox (WebM) */}
-              <source src={flowerWebm} type="video/webm" />
-          </video>
-      </div>
-            <IDCard top='120vh'right='12%'/>
-            <Footer onNavigate={handleNavigation} />
-        </div>
+          {currentSection === 'uiux' && (
+            <>
+              <UIUXPage />
+              <Footer onNavigate={handleNavigation} />
+            </>
+          )}
+
+          {currentSection === 'contact' && (
+            <>
+              <ContactPage />
+            </>
+          )}
+
+          {/* Homepage Content (Blume unten) */}
+          {!currentSection && (
+            <div style={{ width: '100%' }}>
+                <div style={{ height: '155vh' }}></div>
+                <div style={{width: '500px', height: '500px', overflow: 'hidden', 
+                  position: 'absolute', top: '105vh', left: '15%', zIndex: '50',
+                    }}>
+                    <video autoPlay muted loop playsInline style={{ width: '100%',
+                      height: '100%', objectFit: 'cover', transform: 'scale(1.5)' }}>
+                        <source src={flowerMov} type='video/mp4; codecs="hvc1"' />
+                        <source src={flowerWebm} type="video/webm" />
+                    </video>
+                </div>
+                <IDCard top='120vh' right='12%'/>
+                <Footer onNavigate={handleNavigation} />
+            </div>
+          )}
+        </motion.div>
       )}
-
     </>
   );
 };
