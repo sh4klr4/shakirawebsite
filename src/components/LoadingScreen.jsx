@@ -4,7 +4,8 @@ import { useProgress } from '@react-three/drei';
 
 // Importiere dein Loader-Video hier
 // (Zum Beispiel das transparente Blumen-Video oder ein anderes)
-import loaderVideo from '../assets/images/artimages/flowerload.webm'; 
+import loaderVideoWebM from '../assets/images/artimages/flowerload.webm'; 
+import loaderVideoMov from '../assets/images/artimages/flowerload.mp4'; 
 // import loaderVideoWebM from '../assets/images/artimages/flower.webm'; // Falls du WebM brauchst
 
 const LoadingScreen = () => {
@@ -60,9 +61,8 @@ const LoadingScreen = () => {
                playsInline 
                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
              >
-               {/* Wenn du WebM hast, nimm das für Windows/Chrome: */}
-               {/* <source src={loaderVideoWebM} type="video/webm" /> */}
-               <source src={loaderVideo} type="video/webm" />
+               <source src={loaderVideoWebM} type="video/webm" />
+               <source src={loaderVideoMov} type='"video/mp4; codecs="hvc1"' />
              </video>
           </motion.div>
         </motion.div>

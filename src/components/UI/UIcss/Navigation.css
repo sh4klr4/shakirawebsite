@@ -51,10 +51,11 @@
 #name-nav {
     /* CHANGED: Use absolute so it's ready to scroll with the page */
     position: absolute; 
-    
+    min-width: 1.2em; /* Oder ein fester Wert, der sicher breiter als der Name ist */
+    text-align: center;
     /* These start positions are correct for the homepage view */
     top: 91%; 
-    left: 48%;
+    left: 49%;
     transform: translate(-50%, -50%) scale(0.3);
 
     pointer-events: auto;
@@ -70,6 +71,9 @@
     /* IMPORTANT: Ensure NO transition on 'top' or 'position' to prevent lag */
     transition: color 0.3s ease, opacity 0.3s ease;
     will-change: top, transform; 
+    padding-right: 20px; /* Gibt dem letzten Buchstaben Platz zum Ausschwingen */
+    display: inline-block; /* Wichtig, damit das Padding korrekt auf die Breite wirkt */
+    overflow: visible !important;
 }
 
 /* REMOVED: #name-nav:hover block (Name will no longer change color on hover) */
