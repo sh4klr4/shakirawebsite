@@ -25,8 +25,10 @@
 .nav-text {
     position: absolute;
     z-index: 12;
-    padding: 40px;
-    font-size: 3em;
+    /* Padding skaliert mit der Bildschirmgröße */
+    padding: clamp(1rem, 2.5vw, 2.5rem); 
+    /* 3em wird zu einem flüssigen Wert zwischen ca. 24px und 48px */
+    font-size: clamp(1.5rem, 3.5vw, 3rem); 
     cursor: pointer;
     pointer-events: auto;
     color: #787878;
@@ -39,20 +41,19 @@
     font-variation-settings: "wght" 200;
 }
 
-/* Specific Positions */
-#art-nav  { top: 7%; left: 7%; letter-spacing: 3px;}
-#code-nav { top: 7%; right: 7%; letter-spacing: 3px;}
-#info-nav { bottom: 7%; left: 7%; letter-spacing: 3px;}
-#uiux-nav { bottom: 7%; right: 7%; letter-spacing: 3px;}
+/* Specific Positions - Nutzung von Prozenten ist hier bereits ideal für Skalierung */
+#art-nav  { top: 7%; left: 7%; letter-spacing: 0.2rem;}
+#code-nav { top: 7%; right: 7%; letter-spacing: 0.2rem;}
+#info-nav { bottom: 7%; left: 7%; letter-spacing: 0.2rem;}
+#uiux-nav { bottom: 7%; right: 7%; letter-spacing: 0.2rem;}
 
 /* Name (Center Bottom) */
-/* In components/UI/Navigation.css */
-
 #name-nav {
     position: absolute; 
     top: 91%; 
     left: 48%;
-    transform: translate(-50%, -50%) scale(0.3);
+    /* Skalierung etwas erhöht, damit es auf kleinen Screens besser lesbar bleibt */
+    transform: translate(-50%, -50%) scale(clamp(0.25, 0.3vw, 0.35));
 
     pointer-events: auto;
     cursor: default;          
@@ -60,40 +61,43 @@
 
     font-family: 'Edwardian Script', cursive;
     color: #b00000;
-    font-size: 20em; 
+    /* 20em ist massiv - wir nutzen clamp für eine riesige, aber kontrollierte Schrift */
+    font-size: clamp(10rem, 20vw, 20rem); 
     z-index: 100;
     
-    /* SAFARI ALPHA-FIX (RECHTS ABSCHNITTEN) */
-    display: inline-block;    /* Ermöglicht saubere Breitenberechnung */
-    padding-right: 60px;      /* Massiver Puffer für das 'L' am Ende */
-    padding-left: 20px;       /* Puffer für den Anfangsbuchstaben */
-    overflow: visible;        /* Verhindert das harte Clipping */
-    text-rendering: optimizeLegibility; /* Hilft Safari beim Font-Rendering */
+    /* SAFARI ALPHA-FIX */
+    display: inline-block;
+    padding-right: clamp(20px, 5vw, 60px); 
+    padding-left: clamp(10px, 2vw, 20px);
+    overflow: visible;
+    text-rendering: optimizeLegibility;
 
     transition: color 0.3s ease, opacity 0.3s ease;
     will-change: transform; 
 }
 
-/* REMOVED: #name-nav:hover block (Name will no longer change color on hover) */
-
 /* --- Hover Boxes (The Glass Cards) --- */
 .hover-box {
     position: absolute;
-    width: 22%;
-    height: 22%;
-    padding: 15px;
+    /* Deine bereits gewählten clamp-Werte sind perfekt */
+    width: clamp(250px, 22vw, 400px); 
+    height: auto; 
+    min-height: clamp(150px, 22vh, 300px);
+    padding: clamp(1rem, 1vw, 2rem);
 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    /* Performance-Optimierung: Blur leicht reduziert für flüssiges Rendering auf Laptops */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
 
     color: #787878;
-    font-size: 1.1em;
-    line-height: 1.4em; 
+    /* Schriftgröße in rem für bessere Skalierbarkeit */
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    line-height: 1.5; 
     pointer-events: none; 
-    letter-spacing: 3px;
+    letter-spacing: 0.15rem;
 
     opacity: 0;
     visibility: hidden;
@@ -121,7 +125,7 @@
 #art-box {
     top: 10%; left: 8%; 
     text-align: right; 
-    align-content: end;
+    align-content: flex-end; /* Modernere Syntax */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
     border-top: 1px solid rgba(255, 255, 255, 0.8);
     border-left: 1px solid rgba(255, 255, 255, 0.8);
@@ -129,7 +133,7 @@
 
 #code-box {
     top: 10%; right: 8%; 
-    align-content: end;
+    align-content: flex-end;
     background: linear-gradient(225deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
     border-top: 1px solid rgba(255, 255, 255, 0.8);
     border-right: 1px solid rgba(255, 255, 255, 0.8);
