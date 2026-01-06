@@ -24,72 +24,81 @@
     z-index: 20;
 }
 
-/* Container Layout */
-.experience-section {
-    padding: 100px 10%;
-    margin-top: 15vh; /* FIXED: Cards appear well after title animation (150vh) + padding */
-    height: 60vh;
-    font-family: 'Inter', sans-serif;
-    color: #787878;
+/* --- BASIS LAYOUT --- */
+.section-wrapper {
+    position: relative;
+    width: 100vw; /* Volle Viewport-Breite erzwingen */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Zentriert alle Kinder horizontal */
+    padding-top: 0;
+    margin: 0;
+    margin-top: 0vh;
+    overflow: visible;
 }
 
+/* Der Container, der den Titel hält */
+.sticky-title-container {
+    position: sticky;
+    top: 2vh; /* Ganz oben */
+    width: 100%; /* WICHTIG: Muss 100% der Sektion einnehmen */
+    height: 150px; 
+    display: flex;
+    justify-content: center; /* Horizontale Zentrierung */
+    align-items: center;     /* Vertikale Zentrierung */
+    z-index: 10;
+    pointer-events: none;
+    /* Falls noch ein 'left' oder 'transform' drin ist: löschen! */
+}
+
+.section-title-sticky {
+    font-family: 'Edwardian Script', cursive;
+    font-size: clamp(5rem, 12vw, 9rem); 
+    color: #787878;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center; /* Text innerhalb des Elements zentrieren */
+    display: block;
+    will-change: transform, opacity;
+}
+
+/* --- KARTEN CONTAINER (70VW) --- */
 .experience-container {
     position: relative;
-    z-index: 20;
-    background: transparent;
+    width: 75vw; 
+    max-width: 1200px;
+    /* margin: 0 auto sorgt für die Zentrierung des Blocks selbst */
+    margin: 2vh auto 0 auto; 
+    z-index: 20; 
+    padding-bottom: 10vh;
 }
 
-.section-title {
-    position: fixed; 
-    
-    /* Initial position */
-    top: 110vh; /* Starts at bottom of first screen */
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.5); /* Starts bigger now */
-
-    pointer-events: none;        
-    white-space: nowrap;     
-
-    font-family: 'Edwardian Script', cursive; 
-    letter-spacing: 0px;
-    font-weight: 200;
-    color: #787878;
-    font-size: 8em; 
-    margin: 0;
-    
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    
-    transition: color 0.3s ease, opacity 0.3s ease;
-    will-change: top, transform;
-    z-index: 100;
+/* Spezifischer Gap nur für Education */
+.education-top-gap {
+    margin-top: 0vh !important; 
 }
 
-/* --- THE CARD --- */
+
 .job-card {
+    width: 100%; 
+    box-sizing: border-box; /* Padding wird in die Breite eingerechnet */
     display: flex;
     align-items: flex-start;
-    padding: 30px;
+    padding: 35px;
     margin-bottom: 30px;
-    
-    /* Visual Styles */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
-    border-top: 1px solid rgba(255, 255, 255, 0.8);
-    border-left: 1px solid rgba(255, 255, 255, 0.8);
-    cursor: pointer;
-
-    /* --- INITIAL STATE (Hidden) --- */
-    opacity: 0; 
-    transform: translateY(50px);
-    
-    /* ONLY transition the properties that change on Hover/Interactivity */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
+
+.job-card.visible {
+    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
 
 /* Define the Animation Keyframes */
 @keyframes fadeUp {
@@ -101,12 +110,6 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* This class triggers the animation */
-.job-card.visible {
-    /* Run the animation 'fadeUp' for 1.5 seconds */
-    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 /* Hover Effect: Works independently now! */
@@ -205,3 +208,134 @@
 }
 
 
+/* --- SKILL GRID LAYOUT --- */
+.skill-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 30px;
+    
+    /* LINKSBÜNDIGKEIT: */
+    /* Oben: 10vh, Rechts: 0, Unten: 15vh, Links: 10% (oder 16vh) */
+    margin: 5vh 0 15vh 10%; 
+    
+    /* Breite reduzieren, damit es nicht zentriert wirkt */
+    width: 50vw; 
+    max-width: 700px;
+    
+    padding: 20px;
+    z-index: 5;
+    justify-items: start; /* Richtet die Icons innerhalb der Zellen links aus */
+}
+
+.skill-icon {
+    max-width: 80px;
+}
+
+/* Sondergröße für Figma auf Desktop */
+.figma-icon {
+    max-width: 60px;
+}
+
+
+/* --- MOBILE OPTIMIERUNG --- */
+@media (max-width: 768px) {
+    .section-wrapper {
+        padding: 0; /* Verhindert doppeltes Padding mit dem Container */
+        margin-top: -5vh; /* Weniger negativer Margin oben */
+    }
+
+    .experience-container {
+        width: 90vw; /* Nutzt den Platz auf dem Handy besser aus */
+        margin: 2vh auto; /* Zentriert den Container horizontal */
+    }
+
+    .education-top-gap {
+        margin-top: -5vh !important; 
+    }
+
+    
+    .sticky-title-container {
+        top: 1vh;
+        height: 100px;
+    }
+
+    .section-title-sticky {
+        font-size: 3.5rem; /* Etwas kleiner für schmale Handys */
+    }
+
+    .job-card {
+        flex-direction: column !important;
+        align-items: center !important; /* Zentriert Logo & Text horizontal */
+        padding: 25px 15px !important;
+        text-align: center; /* Zentriert den Textinhalt */
+    }
+
+    .logo-wrapper {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        height: 60px !important; /* Festgelegte Höhe für das Logo */
+        padding-right: 0 !important;
+        margin-bottom: 20px;
+        justify-content: center !important; /* Logo horizontal zentrieren */
+    }
+
+    .company-logo {
+        max-height: 100%; /* Verhindert, dass das Logo zu hoch wird */
+        max-width: 180px; /* Begrenzt die Breite auf Mobile */
+        object-fit: contain;
+    }
+
+    .job-header {
+        height: auto; /* Auf Mobile darf die Höhe variabel sein */
+        align-items: center;
+    }
+
+    .job-role {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+
+    .job-bullets li {
+        text-align: left; /* Die Aufzählungspunkte bleiben linksbündig für bessere Lesbarkeit */
+        padding-left: 25px;
+    }
+
+    .card-scene.info-id-card {
+        /* Hebt die absolute Positionierung auf */
+        position: relative !important;
+        
+        /* Überschreibt die Inline-Props 'top' und 'right' */
+        top: 0 !important;
+        right: auto !important;
+        
+        /* Zentrierung der Karte */
+        margin: 0vh auto 5vh auto !important;
+        
+        /* Optional: Karte auf dem Handy etwas kleiner machen, 
+           falls sie den Bildschirm sprengt */
+        transform: scale(0.8);
+        display: flex;
+        justify-content: center;
+    }
+
+    .skill-grid-container {
+        /* Handy: 3 Spalten, damit Icons nicht winzig werden */
+        grid-template-columns: repeat(3, 1fr); 
+        width: 90vw;
+        gap: 20px;
+        margin-right: 5vw;
+        margin-left: 5vw;
+        margin-top: -12vh;
+        margin-bottom: 2vh; /* Weniger Platz zur IDCard auf Mobile */
+    }
+
+    /* Alle normalen Icons werden kleiner */
+    .skill-icon {
+        max-width: 55px !important;
+    }
+
+    /* Figma wird jetzt AUCH kleiner (proportional) */
+    .figma-icon {
+        max-width: 40px !important;
+    }
+}

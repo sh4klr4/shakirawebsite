@@ -34,60 +34,29 @@ const educationData = [
 ];
 
 const EducationSection = () => {
+    const sectionRef = useRef(null);
     const titleRef = useRef(null);
     const [showCards, setShowCards] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const windowHeight = window.innerHeight;
+          if (!sectionRef.current || !titleRef.current) return;
 
-            // --- EDUCATION ANIMATION LOGIC ---
-            
-            // 1. STARTPUNKT (Dein Wunsch: 1.0)
-            const eduStart = windowHeight * 1.0; 
-            const eduEnd = eduStart + windowHeight * 0.8; 
-            
-            let eduProgress = 0;
-            if (scrollY < eduStart) eduProgress = 0;
-            else if (scrollY >= eduStart && scrollY <= eduEnd) eduProgress = (scrollY - eduStart) / (eduEnd - eduStart); 
-            else eduProgress = 1; 
+          const rect = sectionRef.current.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
 
-            const endTop = 85; 
-            const startScale = 0.5; 
-            const endScale = 1;  
-            const eduStartTop = 130; 
-            
-            const currentTop = eduStartTop - ((eduStartTop - endTop) * eduProgress);
-            const currentScale = startScale + ((endScale - startScale) * eduProgress);
-            
-            const opacity = eduProgress < 0.2 ? eduProgress * 5 : 1; 
+          // Synchronisierte Logik mit Experience (1.5 Multiplikator für frühen Start)
+          let progress = Math.min(1, Math.max(0, 1 - (rect.top / (windowHeight * 1.5))));
 
-            if (titleRef.current) {
-                if (scrollY < eduStart) {
-                   titleRef.current.style.position = 'absolute';
-                   // Start-Position (versteckt)
-                   titleRef.current.style.top = '200vh'; 
-                   titleRef.current.style.opacity = 0; 
-                } 
-                else if (scrollY >= eduStart && scrollY < eduEnd) {
-                   // WÄHREND DER ANIMATION (Fixed)
-                   titleRef.current.style.position = 'fixed';
-                   titleRef.current.style.top = `${currentTop}vh`;
-                   titleRef.current.style.opacity = opacity; 
-                } 
-                else {
-                   // 2. END POSITION (Absolute Landung)
-                   // Berechnung: Scroll-Ende (1.8h) + End-Position im Screen (75vh) = 2.55h -> 255vh
-                   // Wenn das immer noch zu tief ist, probiere 235vh oder 245vh.
-                   titleRef.current.style.position = 'absolute';
-                   titleRef.current.style.top = `265vh`; 
-                   titleRef.current.style.opacity = 1;
-                }
-                titleRef.current.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
-            }
-            if (scrollY > eduEnd + 250) setShowCards(true);
-        };
+          // Scale von 0.6 auf 1.0 und Opacity basierend auf Progress
+          titleRef.current.style.transform = `scale(${0.6 + (0.4 * progress)})`;
+          titleRef.current.style.opacity = progress;
+
+          // Karten einblenden, wenn die Sektion zur Hälfte im Viewport ist
+          if (rect.top < windowHeight * 0.5) {
+              setShowCards(true);
+          }
+      };
 
         window.addEventListener('scroll', handleScroll);
         handleScroll();
@@ -95,33 +64,37 @@ const EducationSection = () => {
     }, []);
 
     return (
-        <>
-            <p ref={titleRef} className="section-title" style={{ zIndex: 101 }}>Education</p>
+        <section ref={sectionRef} className="section-wrapper education-top-gap">
+            <div className="sticky-title-container">
+                <p ref={titleRef} className="section-title-sticky">Education</p>
+            </div>
             
-            {/* Cards Container */}
-            <section className="experience-section" style={{ marginTop: '-10vh', paddingTop: '20vh', height:'55vh' }}>
-                <div className="experience-container">
-                    {educationData.map((school, index) => (
-                        <div 
-                            key={school.id} 
-                            className={`job-card ${showCards ? 'visible' : ''}`}
-                            style={{ animationDelay: showCards ? `${index * 0.4}s` : '0s' }}
-                        >
-                           <div className="logo-wrapper"><img src={school.logo} alt="logo" className="company-logo" /></div>
-                           <div className="content-wrapper">
-                             <div className="job-header">
-                               <h3 className="job-role">{school.role}</h3>
-                               <span className="job-meta">{school.date} | {school.location}</span>
-                             </div>
-                             <div className="job-details">
-                               <ul className="job-bullets">{school.bullets.map((point, i) => <li key={i}>{point}</li>)}</ul>
-                             </div>
-                           </div>
+            {/* Klasse auf experience-container geändert, damit die 75vw aus deinem CSS greifen */}
+            <div className="experience-container">
+                {educationData.map((school, index) => (
+                    <div 
+                        key={school.id} 
+                        className={`job-card ${showCards ? 'visible' : ''}`}
+                        style={{ animationDelay: showCards ? `${index * 0.15}s` : '0s' }}
+                    >
+                        <div className="logo-wrapper">
+                            <img src={school.logo} alt="logo" className="company-logo" />
                         </div>
-                    ))}
-                </div>
-            </section>
-        </>
+                        <div className="content-wrapper">
+                            <div className="job-header">
+                                <h3 className="job-role">{school.role}</h3>
+                                <span className="job-meta">{school.date} | {school.location}</span>
+                            </div>
+                            <div className="job-details">
+                                <ul className="job-bullets">
+                                    {school.bullets.map((point, i) => <li key={i}>{point}</li>)}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
     );
 };
 

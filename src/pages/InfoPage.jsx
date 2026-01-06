@@ -28,7 +28,7 @@ const InfoPage = () => {
             </div>
 
             <SkillGrid/>
-            <IDCard top='110vh' right='10%'/>
+            <IDCard top='110vh' right='10%' className="info-id-card"/>
             {/* Modularisierte Sections */}
             <ExperienceSection />
             <EducationSection />

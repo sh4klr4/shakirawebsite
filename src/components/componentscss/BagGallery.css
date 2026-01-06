@@ -153,4 +153,6 @@
   
   .content-container { max-width: 300px; margin-bottom: 40px; }
   .bag-number { margin-top: 0; left: 0; margin-right: 15px; }
+
+  .global-description {bottom: 3%;}
 }

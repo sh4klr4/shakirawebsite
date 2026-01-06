@@ -1,6 +1,7 @@
 import React from 'react';
 // 1. Importiere 'motion' von framer-motion
 import { motion } from 'framer-motion';
+import '../pages/pagescss/InfoPage.css';
 
 // --- BILD IMPORTE (unverändert) ---
 import Unity from '../assets/images/skilllogo/unity.png';
@@ -40,15 +41,11 @@ const SkillGrid = () => {
     { name: 'Photoshop', img: photoshop },
   ];
 
-  // --- ANIMATIONS-VARIANTEN (unverändert) ---
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      }
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
     }
   };
 
@@ -57,27 +54,11 @@ const SkillGrid = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100
-      }
+      transition: { type: "spring", stiffness: 100 }
     }
   };
 
-  // STYLES (unverändert)
-  const containerStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
-    gap: '20px',
-    maxWidth: '600px',
-    marginTop: '5vh',
-    marginLeft: '16vh',
-    marginBottom: '25vh',
-    padding: '30px 10px',
-    alignItems: 'center',
-    justifyItems: 'center'
-  };
-
+  // --- ANIMATIONS-VARIANTEN (unverändert) ---
   const itemStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -86,10 +67,9 @@ const SkillGrid = () => {
     cursor: 'pointer',
   };
 
-  // Das ist der Standard-Style für alle Bilder (maxWidth: 80px)
+  // NUR noch die Basis-Styles hier lassen
   const baseImageStyle = {
     width: '100%',
-    maxWidth: '80px', 
     height: 'auto',
     objectFit: 'contain',
     filter: 'drop-shadow(0px 4px 6px rgba(0,0,0,0.1))'
@@ -97,40 +77,30 @@ const SkillGrid = () => {
 
   return (
     <motion.div 
-      style={containerStyle}
+      className="skill-grid-container"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      {skills.map((skill, index) => {
-        // --- HIER IST DIE ÄNDERUNG ---
-        
-        // 1. Prüfen: Ist das aktuelle Bild "Figma"?
-        const isFigma = skill.name === 'Figma';
-
-        const finalImageStyle = isFigma 
-          ? { ...baseImageStyle, maxWidth: '60px' } 
-          : baseImageStyle;
-
-        return (
-          <motion.div 
-            key={index} 
-            style={itemStyle}
-            variants={itemVariants}
-            whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <img 
-              src={skill.img} 
-              alt={skill.name} 
-              title={skill.name} 
-              // 3. Den berechneten Style hier anwenden
-              style={finalImageStyle} 
-            />
-          </motion.div>
-        );
-      })}
+      {skills.map((skill, index) => (
+        <motion.div 
+          key={index} 
+          style={itemStyle}
+          variants={itemVariants}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <img 
+            src={skill.img} 
+            alt={skill.name} 
+            title={skill.name} 
+            /* Wir geben Figma eine eigene Klasse statt Inline-Styles */
+            className={`skill-icon ${skill.name === 'Figma' ? 'figma-icon' : ''}`}
+            style={baseImageStyle} 
+          />
+        </motion.div>
+      ))}
     </motion.div>
   );
 };

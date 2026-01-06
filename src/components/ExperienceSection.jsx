@@ -35,44 +35,26 @@ const experienceData = [
 ];
 
 const ExperienceSection = () => {
+    const sectionRef = useRef(null);
     const titleRef = useRef(null);
     const [showCards, setShowCards] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const windowHeight = window.innerHeight;
-            
-            // --- EXPERIENCE ANIMATION LOGIC ---
-            const expStart = 0; 
-            const expEnd = windowHeight * 1 - 20; 
-            
-            let expProgress = 0;
-            if (scrollY < expStart) expProgress = 0;
-            else if (scrollY >= expStart && scrollY <= expEnd) expProgress = scrollY / expEnd; 
-            else expProgress = 1; 
+          if (!sectionRef.current || !titleRef.current) return;
 
-            const startTop = 145;
-            const endTop = 75; 
-            const startScale = 0.5; 
-            const endScale = 1;  
-            
-            const currentTop = startTop - ((startTop - endTop) * expProgress);
-            const currentScale = startScale + ((endScale - startScale) * expProgress);
+          const rect = sectionRef.current.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
 
-            if (titleRef.current) {
-                if (scrollY >= expEnd) {
-                    titleRef.current.style.position = 'absolute';
-                    titleRef.current.style.top = '173vh'; 
-                } else {
-                    titleRef.current.style.position = 'fixed';
-                    titleRef.current.style.top = `${currentTop}vh`;
-                }
-                titleRef.current.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
-            }
+          let progress = Math.min(1, Math.max(0, 1 - (rect.top / (windowHeight * 1.5))));
 
-            if (scrollY > expEnd + 200) setShowCards(true);
-        };
+          titleRef.current.style.transform = `scale(${0.6 + (0.4 * progress)})`;
+          titleRef.current.style.opacity = progress;
+
+          if (rect.top < windowHeight * 0.5) {
+              setShowCards(true);
+          }
+      };
 
         window.addEventListener('scroll', handleScroll);
         handleScroll();
@@ -80,32 +62,36 @@ const ExperienceSection = () => {
     }, []);
 
     return (
-        <>
-            <p ref={titleRef} className="section-title">Experience</p>
+        <section ref={sectionRef} className="section-wrapper">
+            <div className="sticky-title-container">
+                <p ref={titleRef} className="section-title-sticky">Experience</p>
+            </div>
             
-            <section className="experience-section" style={{ height: 'unset', minHeight: '80vh', paddingBottom: '0' }}>
-                <div className="experience-container">
-                    {experienceData.map((job, index) => (
-                        <div 
-                            key={job.id} 
-                            className={`job-card ${showCards ? 'visible' : ''}`}
-                            style={{ animationDelay: showCards ? `${index * 0.4}s` : '0s' }}
-                        >
-                           <div className="logo-wrapper"><img src={job.logo} alt="logo" className="company-logo" /></div>
-                           <div className="content-wrapper">
-                             <div className="job-header">
-                               <h3 className="job-role">{job.role}</h3>
-                               <span className="job-meta">{job.date} | {job.location}</span>
-                             </div>
-                             <div className="job-details">
-                               <ul className="job-bullets">{job.bullets.map((point, i) => <li key={i}>{point}</li>)}</ul>
-                             </div>
-                           </div>
+            <div className="experience-container">
+                {experienceData.map((job, index) => (
+                    <div 
+                        key={job.id} 
+                        className={`job-card ${showCards ? 'visible' : ''}`}
+                        style={{ animationDelay: showCards ? `${index * 0.15}s` : '0s' }}
+                    >
+                        <div className="logo-wrapper">
+                            <img src={job.logo} alt="logo" className="company-logo" />
                         </div>
-                    ))}
-                </div>
-            </section>
-        </>
+                        <div className="content-wrapper">
+                            <div className="job-header">
+                                <h3 className="job-role">{job.role}</h3>
+                                <span className="job-meta">{job.date} | {job.location}</span>
+                            </div>
+                            <div className="job-details">
+                                <ul className="job-bullets">
+                                    {job.bullets.map((point, i) => <li key={i}>{point}</li>)}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
     );
 };
 
