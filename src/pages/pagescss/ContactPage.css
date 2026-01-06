@@ -132,34 +132,54 @@ textarea.glass-input {
 
 /* --- MOBILE ADJUSTMENTS --- */
 @media (max-width: 768px) {
-    /* 1. Hide the IDCard and the Footer Wrapper */
-    .id-card-container, /* Ensure this matches the class name inside your IDCard component */
+    /* 1. IDCard und Footer ausblenden */
+    .id-card-container, 
     .contact-footer-wrapper {
         display: none !important;
     }
 
-    /* 2. Make the Form Wrapper take up 90vw and center it */
+    /* 2. Form-Wrapper neu positionieren */
     .form-wrapper {
-        left: 50% !important;
+        position: absolute !important;
+        /* Wir definieren NUR die Ränder, keine feste Breite */
+        left: 5% !important;   
+        right: 5% !important;  
+        width: auto !important; /* WICHTIG: Erlaubt left/right zu wirken */
+        
         top: 50% !important;
-        transform: translate(-50%, -50%) !important; /* Perfect center */
-        width: 90vw !important;
-        max-width: none;
+        transform: translateY(-50%) !important; 
+        
+        /* Sicherstellen, dass nichts das Padding überschreibt */
+        margin: 0 !important; 
+        min-width: 0 !important; 
+        max-width: none !important;
+        z-index: 100;
     }
 
-    /* 3. Optional: Adjust heading and spacing for smaller screens */
+    /* 3. Form-Inhalt zentrieren */
+    .glass-form {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .glass-input {
+        /* Nutze 100% des Wrappers (der 90% breit ist) */
+        width: 100% !important;
+        box-sizing: border-box !important; /* Padding wird in die Breite eingerechnet */
+    }
+
+    /* 4. Texte anpassen */
     .form-heading {
         text-align: center;
-        font-size: 1.8rem;
-    }
-
-    textarea.glass-input {
-        height: 120px; /* Slightly shorter for mobile keyboards */
+        width: 100%;
+        font-size: 1.4rem; /* Etwas kleiner für Mobile */
     }
 
     .emaillink {
         text-align: center;
         display: block;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        margin-top: 15px;
     }
 }
