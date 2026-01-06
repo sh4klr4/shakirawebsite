@@ -8,16 +8,15 @@ import { BlurFadeWrapper } from '../components/TextAnimation';
 const UIUXPage = () => {
     return (
     <div>
-      <div style={{height: '100vh'}}>
+      <div className="hero-section">
         <BlurFadeWrapper className='description-lt'>
-        
-        Good design is simple yet engaging. <br/>
-        Balancing self-explanatory functions<br/>
+          Good design is simple yet engaging. <br/>
+          Balancing self-explanatory functions<br/>
           with immersive storytelling <br/>
-        to not only attract users, <br/>
-        but also compel them stay. <br/>
-        This is how I want to shape <br/>
-        the user experience.
+          to not only attract users, <br/>
+          but also compel them stay. <br/>
+          This is how I want to shape <br/>
+          the user experience.
         </BlurFadeWrapper>
 
         <BlurFadeWrapper className='description-caption-lb'>

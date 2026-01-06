@@ -70,7 +70,7 @@ const SkillGrid = () => {
     gridTemplateColumns: 'repeat(5, 1fr)',
     gap: '20px',
     maxWidth: '600px',
-    marginTop: '105vh',
+    marginTop: '5vh',
     marginLeft: '16vh',
     marginBottom: '25vh',
     padding: '30px 10px',

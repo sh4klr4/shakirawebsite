@@ -11,19 +11,21 @@ import EducationSection from '../components/EducationSection';
 const InfoPage = () => {
     return (
         <div>
-            <BlurFadeWrapper className='description-rt'>
-                Hello World! I'm Shakira Bassl and<br/>
-                interested in design and software<br/>
-                development work. I have 6+ years of<br/>
-                coding experience, am passionate 
-                about art, fashion, UI/UX, 3D design. Also <br/>
-                always looking for my next challenge.<br/>
-                Let's connect!
-            </BlurFadeWrapper>
-            
-            <BlurFadeWrapper className='description-caption-rb'>
-                [currently looking for a Bachelor Thesis]
-            </BlurFadeWrapper>
+            <div className="hero-section">
+                <BlurFadeWrapper className='description-rt'>
+                    Hello World! I'm Shakira Bassl and<br/>
+                    interested in design and software<br/>
+                    development work. I have 6+ years of<br/>
+                    coding experience, am passionate 
+                    about art, fashion, UI/UX, 3D design. Also <br/>
+                    always looking for my next challenge.<br/>
+                    Let's connect!
+                </BlurFadeWrapper>
+                
+                <BlurFadeWrapper className='description-caption-rb'>
+                    [currently looking for a Bachelor Thesis]
+                </BlurFadeWrapper>
+            </div>
 
             <SkillGrid/>
             <IDCard top='110vh' right='10%'/>

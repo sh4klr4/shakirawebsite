@@ -9,7 +9,7 @@
   transition: all 0.5s ease;
   letter-spacing: 1px;
   
-  height: 80%; 
+  height: 620px; 
   display: flex;
   flex-direction: column;
   cursor: pointer; /* NEU: Zeiger für die gesamte Karte */
@@ -24,7 +24,7 @@
 .hero-image-wrapper {
   width: 100%;
   /* --- NEU: Hero ist jetzt 60vh hoch --- */
-  height: 50vh; 
+  height: 420px; 
   overflow: hidden;
   background-color: #e0e0e0;
   flex-shrink: 0; /* Verhindert, dass das Bild schrumpft */

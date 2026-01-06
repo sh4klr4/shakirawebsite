@@ -1,20 +1,36 @@
-/* Container for the main descriptive text */
+/* Container for the main descriptive text - TOP LEFT */
 .description-lt {
     position: absolute;     
     left: 8%;              
-    top: 10%;               
+    top: 10%; /* Stays 10% from the top of the FIRST screen */
     width: 28%;              
     color: #787878;           
     font-size: 16px;          
-    letter-spacing:2px;
-    line-height: 1.3;          
+    letter-spacing: 2px;
+    line-height: 1.3;
+    z-index: 20;          
 }
 
+/* Caption - BOTTOM LEFT */
 .description-caption-lb {
     position: absolute;        
     left: 8%;                 
-    bottom: 10%;               
+    bottom: 10%; /* Stays 10% from the bottom of the FIRST screen */
     color: #787878;                  
     font-size: 16px;          
-    letter-spacing:2px;
+    letter-spacing: 2px;
+    z-index: 20;
+}
+
+@media (max-width: 768px) {
+    .description-lt, 
+    .description-caption-lb {
+        left: 5% !important;
+        width: 90% !important;
+        font-size: 14px !important;
+    }
+    
+    .description-lt {
+        top: 15% !important; /* Move down slightly for mobile status bars */
+    }
 }

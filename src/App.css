@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'Pixeloid Sans';
-  src: url('./assets/fonts/Helvetica/PixeloidSans.ttf') format('truetype');
+  src: url('./assets/fonts/PixeloidSans.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,10 +27,11 @@ html, body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden; 
+    overflow-x: hidden !important;
     overflow-y: auto; /* Vertikales Scrollen erlauben */
     background-color: transparent;
     font-family: 'Inter', sans-serif;
+    position: relative;
 }
 
 /*this is for the model head*/
@@ -44,6 +45,107 @@ canvas {
     touch-action: none;
 }
 
+
+/* --- Footer Section Responsive Logic --- */
+
+.homepage-footer-content {
+    position: relative;
+    width: 100%;
+}
+
+.flower-container {
+    /* Fluid size: 300px on small screens, up to 500px on large */
+    width: clamp(300px, 45vw, 500px); 
+    height: clamp(300px, 45vw, 500px);
+    overflow: hidden;
+    position: absolute;
+    top: 105vh;
+    left: 10%; /* Slightly more to the left to make room */
+    z-index: 50;
+    pointer-events: none;
+}
+
+.flower-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.5);
+}
+
+.id-card-wrapper {
+    position: absolute;
+    top: 122vh; /* Adjusted to sit slightly lower/staggered */
+    right: 8%;
+    z-index: 60;
+}
+
+/* --- MOBILE SPECIFIC TWEAKS --- */
+/* --- MOBILE SPECIFIC REFINEMENTS --- */
+@media (max-width: 768px) {
+    /* 1. The Script Name: Pull it slightly higher to separate from the flower */
+    #name-nav {
+        /* This ensures the text doesn't try to wrap or shrink */
+        white-space: nowrap !important;
+        width: auto !important;
+        /* Ensure the origin of the scale is the center */
+        transform-origin: center center; 
+        
+        /* Optical fix: prevents the very edges of 
+           script curls from being clipped by the element's own box */
+        padding: 0 50px; 
+    }
+
+    /* 2. The Flower: Center it and set a fixed top position */
+    .flower-container {
+        top: 100vh; 
+        left: 50% !important;
+        transform: translateX(-50%); /* Center horizontally */
+        width: 90vw; /* Take up more width on mobile */
+        height: auto;
+    }
+
+    /* 3. The ID Card: Push it significantly lower (increased from 135 to 150) */
+    .id-card-wrapper {
+        top: 135vh !important; /* Move the whole container down */
+        right: auto !important;
+        left: 0 !important;
+        width: 100% !important; /* Make wrapper full width to allow centering */
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Target the SCENE inside the wrapper */
+    .id-card-wrapper .card-scene {
+        /* Reset inline styles passed from React props */
+        position: relative !important; 
+        top: 0 !important; 
+        right: auto !important;
+        left: auto !important;
+        
+        /* Remove the horizontal transform because Flexbox is now doing the centering */
+        transform: none !important; 
+        
+        margin: 0 auto;
+    }
+
+    /* Target the Object inside to ensure it doesn't drift during rotation */
+    .id-card-wrapper .card-object {
+        left: 0 !important;
+        margin: 0 auto;
+    }
+    /* 4. Contact Me / Footer: Add a large buffer above the footer */
+    /* This ensures 'Contact Me' stays well below the ID card */
+    .homepage-footer-content {
+        padding-bottom: 5vh; /* Extra scroll space at the very bottom */
+    }
+    
+    /* Target the footer component inside the homepage specifically */
+    .homepage-footer-content footer, 
+    .homepage-footer-content .footer-container {
+        margin-top: 30vh; /* Huge gap after the ID card */
+        position: relative;
+    }
+}
 
 
 

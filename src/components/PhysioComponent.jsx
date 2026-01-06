@@ -5,7 +5,7 @@ import physioMockup from '../assets/images/uiuximages/physiomockup.png';
 import uiDashboard from '../assets/images/uiuximages/physiohome.png'; 
 import uiTracking from '../assets/images/uiuximages/physioworkout.png';
 import uiProgress from '../assets/images/uiuximages/physioafter.png';
-import scrollVideo from '../assets/images/uiuximages/physioscroll.mov';
+import scrollVideo from '../assets/images/uiuximages/physioscroll.mp4';
 
 const PhysioComponent = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -90,6 +90,7 @@ const PhysioComponent = () => {
               loop 
               muted 
               playsInline
+              preload="auto"
             >
                <source src={scrollVideo} type="video/mp4" />
             </video>

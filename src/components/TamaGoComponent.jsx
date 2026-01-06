@@ -6,9 +6,9 @@ import tamagoHero from '../assets/images/uiuximages/tamagomockup.png';
 import tamagoFooter from '../assets/images/uiuximages/tamagophones.png';
 
 // Videos & Images
-import eggsVideo from '../assets/images/uiuximages/tamagoeggs.mov'; 
-import friendVideo from '../assets/images/uiuximages/tamagofriend.mov'; 
-import startVideo from '../assets/images/uiuximages/tamagostart.mov'; 
+import eggsVideo from '../assets/images/uiuximages/tamagoeggs.mp4'; 
+import friendVideo from '../assets/images/uiuximages/tamagofriend.mp4'; 
+import startVideo from '../assets/images/uiuximages/tamagostart.mp4'; 
 
 import colorSwatch from '../assets/images/uiuximages/tamagocolor.png'; 
 import appIcon from '../assets/images/uiuximages/tamagoicon.png'; 
@@ -71,7 +71,8 @@ const TamaGoComponent = () => {
           
           <div className="tamago-cluster-grid">
             <div className="cluster-col col-left">
-              <video src={eggsVideo} className="tamago-phone-media" autoPlay loop muted playsInline />
+              <video src={eggsVideo} type="video/mp4" className="tamago-phone-media" 
+              autoPlay loop muted playsInline preload="auto"/>
                 <img src={pixelAnimals} alt="Pixel Animals" className="animals-img" />
             </div>
 
@@ -86,7 +87,8 @@ const TamaGoComponent = () => {
                    <img src={appIcon} alt="App Icon" className="app-icon-img" />
                 </div>
                 <div className="asset-bottom">
-                   <video src={startVideo} className="tamago-phone-media" autoPlay loop muted playsInline />
+                   <video src={startVideo} type="video/mp4" className="tamago-phone-media" 
+                   autoPlay loop muted playsInline preload="auto"/>
                 </div>
             </div>
           </div>
@@ -99,7 +101,8 @@ const TamaGoComponent = () => {
                 <img src={routeUi} alt="Stats Screen 2" className="tamago-phone-media" />
              </div>
              <div className="grid-cell centered">
-                <video src={friendVideo} className="tamago-phone-media" autoPlay loop muted playsInline />
+                <video src={friendVideo} type="video/mp4" className="tamago-phone-media" 
+                autoPlay loop muted playsInline preload="auto"/>
              </div>
           </div>
 

@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import './componentscss/IDCard.css';
 import profilePic from '../assets/images/infoimages/ShakiraWork.png';
 
-const IDCard = ({ top = '31%', right = '6%' }) => {
+const IDCard = ({ top = '31%', right = '6%', className = "" }) => {
   const [angle, setAngle] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const requestRef = useRef();
@@ -33,7 +33,7 @@ const IDCard = ({ top = '31%', right = '6%' }) => {
 
   return (
     <div 
-      className="card-scene" 
+      className={`card-scene ${className}`}
       style={{ top, right }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

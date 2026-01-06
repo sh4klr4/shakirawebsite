@@ -14,6 +14,7 @@
     pointer-events: none; 
     transition: opacity 0.5s ease;
     opacity: 1;
+    overflow: visible !important;
 }
 
 .nav-layer.hidden {
@@ -25,10 +26,9 @@
 .nav-text {
     position: absolute;
     z-index: 12;
-    /* Padding skaliert mit der Bildschirmgröße */
-    padding: clamp(1rem, 2.5vw, 2.5rem); 
-    /* 3em wird zu einem flüssigen Wert zwischen ca. 24px und 48px */
-    font-size: clamp(1.5rem, 3.5vw, 3rem); 
+    /* FIX: Match this exactly to the .hover-box padding so they align perfectly */
+    padding: clamp(1rem, 1vw, 2rem); 
+    font-size: clamp(2rem, 3.5vw, 3rem); 
     cursor: pointer;
     pointer-events: auto;
     color: #787878;
@@ -36,16 +36,16 @@
     transition: color 0.3s, text-shadow 0.3s ease, font-variation-settings 0.3s ease;
 }
 
+#art-nav  { top: 10%; left: 8%; letter-spacing: 0.2rem;}
+#code-nav { top: 10%; right: 8%; letter-spacing: 0.2rem;}
+#info-nav { bottom: 10%; left: 8%; letter-spacing: 0.2rem;}
+#uiux-nav { bottom: 10%; right: 8%; letter-spacing: 0.2rem;}
+
 .nav-text.active {
     color: #b00000;
     font-variation-settings: "wght" 200;
 }
 
-/* Specific Positions - Nutzung von Prozenten ist hier bereits ideal für Skalierung */
-#art-nav  { top: 7%; left: 7%; letter-spacing: 0.2rem;}
-#code-nav { top: 7%; right: 7%; letter-spacing: 0.2rem;}
-#info-nav { bottom: 7%; left: 7%; letter-spacing: 0.2rem;}
-#uiux-nav { bottom: 7%; right: 7%; letter-spacing: 0.2rem;}
 
 /* Name (Center Bottom) */
 #name-nav {
@@ -69,10 +69,12 @@
     display: inline-block;
     padding-right: clamp(20px, 5vw, 60px); 
     padding-left: clamp(10px, 2vw, 20px);
-    overflow: visible;
+    box-sizing: border-box; /* Includes padding in the width calculation */
+    overflow: hidden;
     text-rendering: optimizeLegibility;
 
     transition: color 0.3s ease, opacity 0.3s ease;
+    filter: drop-shadow(0 0 0 transparent);
     will-change: transform; 
 }
 
@@ -80,12 +82,11 @@
 .hover-box {
     position: absolute;
     /* Deine bereits gewählten clamp-Werte sind perfekt */
-    width: clamp(250px, 22vw, 400px); 
+    width: clamp(50px, 22vw, 400px); 
     height: auto; 
-    min-height: clamp(150px, 22vh, 300px);
+    min-height: clamp(30px, 22vh, 300px);
     padding: clamp(1rem, 1vw, 2rem);
 
-    /* Performance-Optimierung: Blur leicht reduziert für flüssiges Rendering auf Laptops */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 20px;
@@ -94,7 +95,7 @@
 
     color: #787878;
     /* Schriftgröße in rem für bessere Skalierbarkeit */
-    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    font-size: clamp(1rem, 1.1vw, 1.5rem);
     line-height: 1.5; 
     pointer-events: none; 
     letter-spacing: 0.15rem;

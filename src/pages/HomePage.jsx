@@ -116,19 +116,23 @@ const HomePage = () => {
 
           {/* Homepage Content (Blume unten) */}
           {!currentSection && (
-            <div style={{ width: '100%' }}>
-                <div style={{ height: '155vh' }}></div>
-                <div style={{width: '500px', height: '500px', overflow: 'hidden', 
-                  position: 'absolute', top: '105vh', left: '15%', zIndex: '50',
-                    }}>
-                    <video autoPlay muted loop playsInline style={{ width: '100%',
-                      height: '100%', objectFit: 'cover', transform: 'scale(1.5)' }}>
-                        <source src={flowerMov} type='video/mp4; codecs="hvc1"' />
-                        <source src={flowerWebm} type="video/webm" />
-                    </video>
-                </div>
-                <IDCard top='120vh' right='12%'/>
-                <Footer onNavigate={handleNavigation} />
+            <div className="homepage-footer-content">
+              <div style={{ height: '155vh' }}></div>
+              
+              {/* Flower Video Container */}
+              <div className="flower-container">
+                <video autoPlay muted loop playsInline className="flower-video">
+                  <source src={flowerMov} type='video/mp4; codecs="hvc1"' />
+                  <source src={flowerWebm} type="video/webm" />
+                </video>
+              </div>
+
+              {/* ID Card - Positioning handled via class for better control */}
+              <div className="id-card-wrapper">
+                <IDCard />
+              </div>
+              
+              <Footer onNavigate={handleNavigation} />
             </div>
           )}
         </motion.div>
