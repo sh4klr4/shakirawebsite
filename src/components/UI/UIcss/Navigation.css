@@ -36,10 +36,10 @@
     transition: color 0.3s, text-shadow 0.3s ease, font-variation-settings 0.3s ease;
 }
 
-#art-nav  { top: 10%; left: 8%; letter-spacing: 0.2rem;}
-#code-nav { top: 10%; right: 8%; letter-spacing: 0.2rem;}
-#info-nav { bottom: 10%; left: 8%; letter-spacing: 0.2rem;}
-#uiux-nav { bottom: 10%; right: 8%; letter-spacing: 0.2rem;}
+#art-nav  { top: 10%; left: 8.5%; letter-spacing: 0.2rem;}
+#code-nav { top: 10%; right: 8.5%; letter-spacing: 0.2rem;}
+#info-nav { bottom: 10%; left: 8.5%; letter-spacing: 0.2rem;}
+#uiux-nav { bottom: 10%; right: 8.5%; letter-spacing: 0.2rem;}
 
 .nav-text.active {
     color: #b00000;
@@ -82,7 +82,7 @@
 .hover-box {
     position: absolute;
     /* Deine bereits gewählten clamp-Werte sind perfekt */
-    width: clamp(80px, 22vw, 400px); 
+    width: clamp(50px, 22vw, 400px); 
     height: auto; 
     min-height: clamp(30px, 22vh, 300px);
     padding: clamp(1rem, 1vw, 2rem);

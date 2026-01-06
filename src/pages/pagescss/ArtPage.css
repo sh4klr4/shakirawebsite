@@ -87,21 +87,3 @@
 
   pointer-events: none; /* User kann durch den Text durchklicken (optional) */
 }
-
-/* Mobile Anpassung */
-@media (max-width: 768px) {
-  .description-rb, 
-  .description-caption-lb,
-  .art-caption-lb {
-    font-size: 12px;
-    width: 80%; /* Mehr Platz für Text auf Handy */
-    right: auto;
-    left: 5%;
-    text-align: left;
-  }
-  
-  .art-wrapper {
-      height: auto;
-      padding: 100px 0;
-  }
-}

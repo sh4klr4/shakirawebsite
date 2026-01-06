@@ -19,7 +19,7 @@ const UIUXPage = () => {
           the user experience.
         </BlurFadeWrapper>
 
-        <BlurFadeWrapper className='description-caption-lb'>
+        <BlurFadeWrapper className='description-caption-lbt'>
           [Website designed in Figma]
         </BlurFadeWrapper>
       </div>

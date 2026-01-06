@@ -82,48 +82,58 @@ canvas {
 /* --- MOBILE SPECIFIC REFINEMENTS --- */
 @media (max-width: 768px) {
     .hover-box {
-        width: 90vw !important;
-        left: 5vw !important; /* Zentriert die 90% weite Box (5% + 90% + 5% = 100%) */
-        right: 5vw !important;
-        overflow-y: auto;
+        width: 75vw !important;
     }
 
-    #art-box, #code-box, #info-box, #uiux-box {
-        left: 5vw !important;
-        right: 5vw !important
-    }
 
     body:has(.hover-box.visible) canvas {
-        filter: blur(10px) brightness(0.8);
+        filter: blur(10px) brightness(1.4);
         transition: filter 0.4s ease;
     }
 
-    /* Description Text auf 90% Weite */
-    .description-rb, 
     .description-lt, 
-    .description-rt, 
-    .description-lb {
-        width: 80% !important;
-        left: 5% !important;
-        right: 5% !important;
-        text-align: left !important;
-        font-size: 14px !important;
-        line-height: 1.4 !important;
-        /* Wir schieben den Text etwas höher, damit die Caption darunter passt */
-        bottom: 18% !important; 
-    }
-
-    /* Caption direkt unter den Description Text */
-    .description-caption-lb,
-    .description-caption-rb {
+    .description-rt {
         width: 90% !important;
         left: 5% !important;
         right: 5% !important;
         text-align: left !important;
-        /* Positioniert die Caption fix unter den Text */
-        bottom: 12% !important; 
-        font-size: 12px !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+        top: 12% !important;      /* Positioned at the top */
+    }
+
+    /* 2. INFO & UI/UX: Position Captions directly UNDER the top text */
+    /* Note: Assuming you update the classes in your JSX to -lbt and -rbt as mentioned */
+    .description-caption-lb, 
+    .description-caption-rb,
+    .description-caption-lbt,
+    .description-caption-rbt {
+        width: 90% !important;
+        left: 5% !important;
+        right: 5% !important;
+        text-align: left !important;
+        font-size: 16px !important;
         opacity: 0.8;
+    }
+    .description-caption-lbt,
+    .description-caption-rbt {
+        top: 35% !important;     
+    }
+    .description-caption-lb, 
+    .description-caption-rb{
+        bottom: 20% !important;
+    }
+
+    /* 3. ART & CODE: Keep text at the BOTTOM (to clear the top hover boxes) */
+    .description-lb, 
+    .description-rb {
+        width: 90% !important;
+        left: 5% !important;
+        right: 5% !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+        bottom: 30% !important; 
     }
 
     /* 1. The Script Name: Pull it slightly higher to separate from the flower */

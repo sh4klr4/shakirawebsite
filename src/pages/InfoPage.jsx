@@ -22,7 +22,7 @@ const InfoPage = () => {
                     Let's connect!
                 </BlurFadeWrapper>
                 
-                <BlurFadeWrapper className='description-caption-rb'>
+                <BlurFadeWrapper className='description-caption-rbt'>
                     [currently looking for a Bachelor Thesis]
                 </BlurFadeWrapper>
             </div>

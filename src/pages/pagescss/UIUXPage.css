@@ -12,7 +12,7 @@
 }
 
 /* Caption - BOTTOM LEFT */
-.description-caption-lb {
+.description-caption-lbt {
     position: absolute;        
     left: 8%;                 
     bottom: 10%; /* Stays 10% from the bottom of the FIRST screen */
@@ -20,17 +20,4 @@
     font-size: 16px;          
     letter-spacing: 2px;
     z-index: 20;
-}
-
-@media (max-width: 768px) {
-    .description-lt, 
-    .description-caption-lb {
-        left: 5% !important;
-        width: 90% !important;
-        font-size: 14px !important;
-    }
-    
-    .description-lt {
-        top: 15% !important; /* Move down slightly for mobile status bars */
-    }
 }

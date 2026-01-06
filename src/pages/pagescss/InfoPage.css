@@ -13,7 +13,7 @@
 }
 
 /* Caption - BOTTOM RIGHT */
-.description-caption-rb {
+.description-caption-rbt {
     position: absolute;        
     right: 8%;                 
     bottom: 10%; /* Now stays 10% from the bottom of the first screen */
