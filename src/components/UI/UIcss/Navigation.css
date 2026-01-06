@@ -82,7 +82,7 @@
 .hover-box {
     position: absolute;
     /* Deine bereits gewählten clamp-Werte sind perfekt */
-    width: clamp(50px, 22vw, 400px); 
+    width: clamp(80px, 22vw, 400px); 
     height: auto; 
     min-height: clamp(30px, 22vh, 300px);
     padding: clamp(1rem, 1vw, 2rem);
