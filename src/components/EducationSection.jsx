@@ -51,11 +51,6 @@ const EducationSection = () => {
           // Scale von 0.6 auf 1.0 und Opacity basierend auf Progress
           titleRef.current.style.transform = `scale(${0.6 + (0.4 * progress)})`;
           titleRef.current.style.opacity = progress;
-
-          // Karten einblenden, wenn die Sektion zur Hälfte im Viewport ist
-          if (rect.top < windowHeight * 0.5) {
-              setShowCards(true);
-          }
       };
 
         window.addEventListener('scroll', handleScroll);

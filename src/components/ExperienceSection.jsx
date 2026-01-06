@@ -51,9 +51,6 @@ const ExperienceSection = () => {
           titleRef.current.style.transform = `scale(${0.6 + (0.4 * progress)})`;
           titleRef.current.style.opacity = progress;
 
-          if (rect.top < windowHeight * 0.5) {
-              setShowCards(true);
-          }
       };
 
         window.addEventListener('scroll', handleScroll);
