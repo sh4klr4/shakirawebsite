@@ -98,11 +98,11 @@ const TamaGoComponent = () => {
                 <img src={statsUi} alt="Stats Screen 1" className="tamago-phone-media" />
              </div>
              <div className="grid-cell centered">
-                <img src={routeUi} alt="Stats Screen 2" className="tamago-phone-media" />
-             </div>
-             <div className="grid-cell centered">
                 <video src={friendVideo} type="video/mp4" className="tamago-phone-media" 
                 autoPlay loop muted playsInline preload="auto"/>
+             </div>
+             <div className="grid-cell centered">
+                <img src={routeUi} alt="Stats Screen 2" className="tamago-phone-media" />
              </div>
           </div>
 

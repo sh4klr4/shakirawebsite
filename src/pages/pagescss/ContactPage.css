@@ -32,10 +32,10 @@
 .form-wrapper {
     position: absolute;
     left: 6%;            
-    top: 55%; /* Center vertically based on screen center */
+    top: 52%; /* Center vertically based on screen center */
     transform: translateY(-55%); /* Pull it up slightly to balance with footer */
     width: 26%; /* Etwas breiter gemacht für bessere Lesbarkeit */
-    min-width: 200px;
+    min-width: 400px;
     z-index: 10;
     
     display: flex;
@@ -86,7 +86,7 @@
 /* Reduziere die Höhe des Textarea etwas, damit es besser auf 100vh passt */
 textarea.glass-input {
     resize: none; /* Verhindert manuelles Vergrößern */
-    height: 150px; /* Feste Höhe statt rows="10" */
+    height: 160px; /* Feste Höhe statt rows="10" */
 }
 
 .glass-button {
@@ -128,4 +128,38 @@ textarea.glass-input {
     text-decoration: underline;
     cursor: pointer;
     margin-top: 30px;
+}
+
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    /* 1. Hide the IDCard and the Footer Wrapper */
+    .id-card-container, /* Ensure this matches the class name inside your IDCard component */
+    .contact-footer-wrapper {
+        display: none !important;
+    }
+
+    /* 2. Make the Form Wrapper take up 90vw and center it */
+    .form-wrapper {
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important; /* Perfect center */
+        width: 90vw !important;
+        max-width: none;
+    }
+
+    /* 3. Optional: Adjust heading and spacing for smaller screens */
+    .form-heading {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    textarea.glass-input {
+        height: 120px; /* Slightly shorter for mobile keyboards */
+    }
+
+    .emaillink {
+        text-align: center;
+        display: block;
+        font-size: 1.5rem;
+    }
 }

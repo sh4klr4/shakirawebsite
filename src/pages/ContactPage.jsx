@@ -44,11 +44,19 @@ const ContactPage = ({ onNavigate }) => { // onNavigate prop empfangen für den 
     }
   };
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+      const handleResize = () => setIsMobile(window.innerWidth <= 768);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="contact-page-container">
       
       {/* 1. The ID Card */}
-      <IDCard/>
+      {!isMobile && <IDCard/>}
 
       {/* 2. The Contact Form */}
       <div className="form-wrapper">
@@ -76,9 +84,11 @@ const ContactPage = ({ onNavigate }) => { // onNavigate prop empfangen für den 
       </div>
 
       {/* 3. The Footer (Absolute Positioned) */}
-      <div className="contact-footer-wrapper">
-         <Footer onNavigate={onNavigate} />
-      </div>
+      {!isMobile && (
+        <div className="contact-footer-wrapper">
+           <Footer onNavigate={onNavigate} />
+        </div>
+      )}
 
     </div>
   )

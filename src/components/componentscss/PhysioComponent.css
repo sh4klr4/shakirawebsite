@@ -1,21 +1,19 @@
 .physio-container {
-  width: 100%;
+  width: 90%; 
   max-width: 1200px;
   background-color: #f9f9f9; 
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  margin: 40px auto;
+  margin: 40px auto; 
   transition: all 0.5s ease;
   letter-spacing: 1px;
-  
-  height: 620px; 
+  height: auto; 
   display: flex;
   flex-direction: column;
-  cursor: pointer; /* NEU: Zeiger für die gesamte Karte */
+  cursor: pointer;
 }
 
-/* Wenn expanded ist, soll die Höhe "automatisch" wachsen */
 .physio-container.expanded {
   height: auto; 
 }
@@ -23,17 +21,16 @@
 /* --- Hero Section --- */
 .hero-image-wrapper {
   width: 100%;
-  /* --- NEU: Hero ist jetzt 60vh hoch --- */
-  height: 420px; 
+  aspect-ratio: 1200 / 420; /* Keep the image proportional */
   overflow: hidden;
   background-color: #e0e0e0;
-  flex-shrink: 0; /* Verhindert, dass das Bild schrumpft */
+  flex-shrink: 0; 
 }
 
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Wichtig: Bild füllt den Bereich ohne Verzerren */
+  object-fit: cover; 
   display: block;
 }
 
@@ -41,12 +38,10 @@
 .content-area {
   padding: 40px;
   background-color: #fff;
-  flex-grow: 1; /* Füllt den Rest der 85vh aus */
+  flex-grow: 1; 
 }
 
-/* ... (Der Rest deines CSS für .header-row, .expanded-details usw. bleibt gleich) ... */
-
-/* Header Grid Layout */
+/* Header Grid Layout - Improved for Mid-size screens */
 .header-row {
   display: grid;
   grid-template-columns: 1.5fr 3fr 0.5fr; 
@@ -54,13 +49,12 @@
   cursor: pointer;
   align-items: flex-start;
 }
-/* ... etc ... */
 
-
+/* Fluid Typography - Ensure these aren't overridden below */
 .titles h1 {
-    font-family: 'Helvetica Bold';
+  font-family: 'Helvetica Bold', sans-serif;
   font-size: 48px;
-  line-height: 1;
+  line-height: 1.1;
   margin: 0 0 10px 0;
   font-weight: 700;
   letter-spacing: 1px;
@@ -79,6 +73,8 @@
   margin: 0;
   max-width: 600px;
 }
+
+
 
 /* --- Toggle Icon --- */
 .toggle-icon {
@@ -155,8 +151,11 @@
   display: block;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .hero-image-wrapper{
+    aspect-ratio: 5/3;
+  }
+
   .header-row {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -168,5 +167,9 @@
 
   .ui-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ui-text-block {
+    grid-column: span 1;
   }
 }

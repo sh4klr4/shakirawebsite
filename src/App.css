@@ -28,7 +28,7 @@ html, body {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden !important;
-    overflow-y: auto; /* Vertikales Scrollen erlauben */
+    overflow-y: auto;
     background-color: transparent;
     font-family: 'Inter', sans-serif;
     position: relative;
@@ -80,14 +80,14 @@ canvas {
 }
 
 /* --- MOBILE SPECIFIC REFINEMENTS --- */
-@media (max-width: 768px) {
+@media (max-width: 568px) {
     .hover-box {
         width: 75vw !important;
     }
 
 
     body:has(.hover-box.visible) canvas {
-        filter: blur(10px) brightness(1.4);
+        filter: blur(10px) brightness(1.2);
         transition: filter 0.4s ease;
     }
 
@@ -117,7 +117,7 @@ canvas {
     }
     .description-caption-lbt,
     .description-caption-rbt {
-        top: 45% !important;     
+        top: 40% !important;     
     }
     .description-caption-lb, 
     .description-caption-rb{
