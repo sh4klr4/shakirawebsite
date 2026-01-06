@@ -84,7 +84,6 @@ canvas {
 @media (max-width: 768px) {
     /* 1. The Script Name: Pull it slightly higher to separate from the flower */
     #name-nav {
-        top: 92% !important; 
         /* This ensures the text doesn't try to wrap or shrink */
         white-space: nowrap !important;
         width: auto !important;
@@ -98,12 +97,12 @@ canvas {
 
     /* 2. Raise the bottom navigation items so they stay above the name */
     #info-nav, #uiux-nav {
-        bottom: 15% !important; /* Move Info/UIUX slightly higher */
+        bottom: 20% !important; /* Move Info/UIUX slightly higher */
     }
 
     /* 3. Ensure hover boxes follow the new navigation positions */
     #info-box, #uiux-box {
-        bottom: 15% !important;
+        bottom: 20% !important;
     }
 
     /* 2. The Flower: Center it and set a fixed top position */
