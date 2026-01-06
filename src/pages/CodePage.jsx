@@ -10,7 +10,7 @@ const CodePage = () => {
   return (
     <div>
       {/* Erster Screen: 3D Model + Glass Box (scrollt mit) */}
-      <div style={{height: '100vh'}}>
+      <div className="hero-section">
         <BlurFadeWrapper className='description-lb'>
           For me software development <br/>
           is fundamentally a process of <br/>
