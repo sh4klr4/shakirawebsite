@@ -138,7 +138,7 @@ const styles = {
   mainContainer: {
     position: 'relative', 
     width: '100vw',
-    height: '100vh',
+    height: '90vh',
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',

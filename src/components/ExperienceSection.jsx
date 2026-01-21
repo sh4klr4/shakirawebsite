@@ -26,8 +26,8 @@ const experienceData = [
     location: 'Vimercate, Italy',
     logo: logo2,
     bullets: [
-      'Full Stack Development: Built "Moria", a web admin interface on Azure Cloud using ASP.NET (MVC) and C#.',
-      'Project Lead: Delivered the "Mercury" notification system from requirements to deployment using MS Automation and Power Apps.',
+      'Full Stack Development: Built a web admin interface on Azure Cloud using ASP.NET (MVC) and C#.',
+      'Project Lead: Delivered a notification system from requirements to deployment using MS Automation and Power Apps.',
       'Data Engineering: Developed a C# module to parse Excel data into Dataverse for Machine Learning readiness.',
       'DevOps: Managed code via Azure DevOps and maintained database schemas across multiple SQL nodes.'
     ]

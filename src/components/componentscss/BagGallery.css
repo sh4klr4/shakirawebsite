@@ -2,10 +2,11 @@
 .gallery-wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 85vh;
+  margin-top: -10vh;
   display: flex;
   justify-content: center; 
-  align-items: center;
+  align-items:start;
   overflow: hidden;
 }
 
@@ -124,7 +125,7 @@
 /* --- CAPTION --- */
 .global-description {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   left: 8%;
   z-index: 20;
 }

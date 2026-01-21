@@ -2,7 +2,7 @@
 .description-rt {
     position: absolute;     
     right: 8%;              
-    top: 10%; /* Now stays 10% from the top of the first screen */
+    top: 12%; /* Now stays 10% from the top of the first screen */
     width: 410px;                 
     color: #787878;           
     font-size: 16px;          
@@ -16,7 +16,7 @@
 .description-caption-rbt {
     position: absolute;        
     right: 8%;                 
-    bottom: 10%; /* Now stays 10% from the bottom of the first screen */
+    bottom: 5%; /* Now stays 10% from the bottom of the first screen */
     color: #787878;                  
     font-size: 16px;          
     letter-spacing: 2px;      
@@ -33,7 +33,7 @@
     align-items: center; /* Zentriert alle Kinder horizontal */
     padding-top: 0;
     margin: 0;
-    margin-top: 0vh;
+    margin-top: -5vh;
     overflow: visible;
 }
 
@@ -216,7 +216,7 @@
     
     /* LINKSBÜNDIGKEIT: */
     /* Oben: 10vh, Rechts: 0, Unten: 15vh, Links: 10% (oder 16vh) */
-    margin: 5vh 0 15vh 10%; 
+    margin: 0vh 0 15vh 10%; 
     
     /* Breite reduzieren, damit es nicht zentriert wirkt */
     width: 50vw; 

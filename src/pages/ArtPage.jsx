@@ -10,7 +10,7 @@ const ArtPage = () => {
     <div>
       {/* Erster Screen: 3D Model + Glass Box (scrollt mit) */}
       {/* ADD THE CLASS 'hero-section' HERE */}
-      <div className="hero-section" style={{height: '100vh'}}>
+      <div className="hero-section" >
         <BlurFadeWrapper className='description-rb'>
           My work is inspired by anatomy<br/>
           skin and human emotion<br/>

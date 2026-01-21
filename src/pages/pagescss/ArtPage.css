@@ -3,13 +3,13 @@
     position: relative; /* This is the key anchor for your text */
     width: 100%;
     /* We keep the height consistent with your inline style */
-    height: 100vh; 
+    height: 93vh; 
 }
 
 .description-rb {
     position: absolute;     
     right: 8%;              
-    bottom: 10%; /* Now refers to 10% from the bottom of the FIRST screen */
+    bottom: 5%; /* Now refers to 10% from the bottom of the FIRST screen */
     width: 410px;              
     color: #787878;           
     font-size: 16px;          
@@ -22,7 +22,7 @@
 .description-caption-lb {
     position: absolute;        
     left: 8%;                 
-    bottom: 10%;               
+    bottom: 5%;               
     color: #787878;                  
     font-size: 16px;          
     letter-spacing: 2px;
@@ -53,7 +53,7 @@
     /* KORREKTUR: Absolute, damit es unten links im Wrapper klebt */
     position: absolute;        
     left: 8%;                 
-    bottom: 10%;               
+    bottom: 0%;               
     
     color: #787878;                  
     font-size: 16px;          
