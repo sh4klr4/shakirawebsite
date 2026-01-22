@@ -56,7 +56,7 @@ const TamaGoComponent = () => {
               Tamago is a gamified fitness app that transforms daily walking 
               into a playful, social experience. Inspired by the nostalgia of 
               Tamagotchi, users nurture a virtual pet through physical activity
-              —walking more means unlocking food and outfits.
+              - walking more means unlocking food and outfits.
             </p>
           </div>
 

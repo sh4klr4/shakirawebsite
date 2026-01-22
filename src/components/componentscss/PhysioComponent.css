@@ -61,13 +61,13 @@
 }
 
 .subtitle {
-  font-size: 18px;
+  font-size: clamp(18px, 1.2vw, 24px);
   color: #999;
   font-weight: 300;
 }
 
 .intro-text p {
-  font-size: 16px;
+  font-size: clamp(16px, 1.1vw, 22px);
   color: #787878;
   line-height: 1.6;
   margin: 0;
@@ -134,7 +134,7 @@
 }
 
 .ui-text-block p {
-  font-size: 16px;
+  font-size: clamp(16px, 1.1vw, 22px);
   color: #787878;
   line-height: 1.6;
 }
