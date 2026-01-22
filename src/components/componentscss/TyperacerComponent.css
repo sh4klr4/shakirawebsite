@@ -61,13 +61,13 @@
 }
 
 .tr-subtitle {
-  font-size: 18px;
+  font-size: clamp(18px, 1.2vw, 24px);
   color: #999;
   font-weight: 300;
 }
 
 .tr-intro-text p {
-  font-size: 16px;
+  font-size: clamp(16px, 1.0vw, 20px);   
   color: #787878;
   line-height: 1.6;
   margin: 0;
@@ -137,7 +137,7 @@
 
 .tr-text-block {
   grid-column: span 2; 
-  font-size: 16px;
+  font-size: clamp(16px, 1.0vw, 20px);  
   color: #787878;
   line-height: 1.6;
   text-align: left;

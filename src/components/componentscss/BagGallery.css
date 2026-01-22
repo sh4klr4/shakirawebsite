@@ -58,7 +58,7 @@
 
 /* --- TYPOGRAPHY (Numbers) --- */
 .bag-number {
-  font-size: 1rem;
+  font-size: clamp(16px, 1.0vw, 20px);
   color: #333;
   font-weight: 300;
   
@@ -131,8 +131,8 @@
 }
 .desc-text {
   color: #787878;                  
-    font-size: 16px;          
-    letter-spacing: 2px;
+  font-size: clamp(16px, 1.0vw, 22px);        
+  letter-spacing: 2px;
 }
 
 /* --- MOBILE --- */

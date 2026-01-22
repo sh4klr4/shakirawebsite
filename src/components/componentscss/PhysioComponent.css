@@ -67,7 +67,7 @@
 }
 
 .intro-text p {
-  font-size: clamp(16px, 1.1vw, 22px);
+  font-size: clamp(16px, 1.0vw, 20px);
   color: #787878;
   line-height: 1.6;
   margin: 0;
@@ -134,7 +134,7 @@
 }
 
 .ui-text-block p {
-  font-size: clamp(16px, 1.1vw, 22px);
+  font-size: clamp(16px, 1.0vw, 20px);
   color: #787878;
   line-height: 1.6;
 }
