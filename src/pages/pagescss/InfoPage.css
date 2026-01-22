@@ -152,7 +152,7 @@
 }
 
 .job-role {
-    font-size: 1.2rem;
+    font-size: clamp(18px, 1.2vw, 24px);     
     font-weight: 600;
     color: #333;
     margin: 0 0 5px 0;
@@ -161,7 +161,7 @@
 }
 
 .job-meta {
-    font-size: 0.9rem;
+    font-size: clamp(16px, 1.0vw, 20px);     
     color: #888;
     font-weight: 300;
 }
@@ -191,7 +191,7 @@
 }
 
 .job-bullets li {
-    font-size: 0.95rem;
+    font-size: clamp(16px, 1.0vw, 20px);     
     color: #555;
     margin-bottom: 10px;
     line-height: 1.5;

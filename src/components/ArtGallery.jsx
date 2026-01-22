@@ -70,7 +70,7 @@ const ArtGallery = () => {
             left: 8%;                 
             bottom: 5%;               
             color: #787878;                  
-            font-size: 16px;          
+            font-size: clamp(16px, 1.0vw, 22px);          
             letter-spacing: 2px;
             z-index: 100; /* Sicherstellen, dass es über dem Marquee liegt */
             pointer-events: none; /* Klicks gehen durch zum Marquee */

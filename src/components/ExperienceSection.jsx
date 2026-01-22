@@ -13,6 +13,7 @@ const experienceData = [
     logo: logo1,
     bullets: [
       'App Development: Developed user-centric Power Apps interfaces to streamline error handling for manufacturing teams.',
+      'Data Visualization: Developed Python application using PyQt6 to represent and visualize data from internal database.',
       'Workflow Automation: Built Power Automate workflows to optimize quality control processes and data logging.',
       'RPA Implementation: Deployed UiPath bots to automate complex data extraction from internal systems.',
       'Requirements Analysis: Collaborated with engineering teams to define requirements and enhance industrial software tools.'

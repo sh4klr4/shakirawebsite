@@ -16,7 +16,7 @@ const InfoPage = () => {
                     Hello World! I'm Shakira Bassl and<br/>
                     interested in design and software<br/>
                     development work. I have 6+ years of<br/>
-                    coding experience, am passionate 
+                    coding experience, am passionate <br/>
                     about art, fashion, UI/UX, 3D design. Also <br/>
                     always looking for my next challenge.<br/>
                     Let's connect!
