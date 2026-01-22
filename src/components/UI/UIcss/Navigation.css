@@ -59,7 +59,7 @@
     cursor: default;          
     white-space: nowrap;     
 
-    font-family: 'Edwardian Script', cursive;
+    font-family: 'Edwardian Script';
     color: #b00000;
     /* 20em ist massiv - wir nutzen clamp für eine riesige, aber kontrollierte Schrift */
     font-size: clamp(10rem, 20vw, 20rem); 

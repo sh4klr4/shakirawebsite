@@ -81,7 +81,7 @@
 
 .tamago-intro-text p {
   /* Min: 16px, Preferred: 1.1vw, Max: 20px */
-  font-size: clamp(16px, 1.1vw, 22px);
+  font-size: clamp(16px, 1.0vw, 20px);
   color: #787878;
   line-height: 1.6;
   margin: 0;
@@ -183,7 +183,7 @@
 
 /* Icon (Rechts Oben) */
 .app-icon-img {
-    width: 38vh; 
+    width: 300px; 
     height: auto;
     border-radius: 22px;
     display: block;
@@ -247,7 +247,7 @@
 }
 
 .footer-text-container p {
-    font-size: clamp(16px, 1.1vw, 22px);
+    font-size: clamp(16px, 1.0vw, 20px);
     color: #787878;
     line-height: 1.6;
     text-align: left; 
