@@ -67,7 +67,7 @@
 .experience-container {
     position: relative;
     width: 75vw; 
-    max-width: 1200px;
+    max-width: 1500px;
     /* margin: 0 auto sorgt für die Zentrierung des Blocks selbst */
     margin: 2vh auto 0 auto; 
     z-index: 20; 

@@ -75,7 +75,7 @@ canvas {
 .id-card-wrapper {
     position: absolute;
     top: 120vh; /* Adjusted to sit slightly lower/staggered */
-    left: 86%;
+    right: 15%;
     z-index: 60;
 }
 
