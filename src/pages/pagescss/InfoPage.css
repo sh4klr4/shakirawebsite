@@ -208,34 +208,57 @@
 }
 
 
+:root {
+    /* Wir definieren eine Basis-Skalierung für das Grid */
+    /* 50vw bedeutet, das Grid ist immer halb so breit wie der Bildschirm */
+    --grid-width: 45vw; 
+}
+
 /* --- SKILL GRID LAYOUT --- */
 .skill-grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr); 
-    gap: 30px;
     
-    /* LINKSBÜNDIGKEIT: */
-    /* Oben: 10vh, Rechts: 0, Unten: 15vh, Links: 10% (oder 16vh) */
-    margin: 0vh 0 15vh 10%; 
+    /* Der Gap skaliert nun mit der Bildschirmbreite (ca. 30px bei 1440px) */
+    gap: calc(var(--grid-width) * 0.06);
     
-    /* Breite reduzieren, damit es nicht zentriert wirkt */
-    width: 50vw; 
-    max-width: 700px;
+    /* Abstände proportional halten */
+    margin: 0vh 0 12vh 8%; 
     
-    padding: 20px;
+    width: var(--grid-width); 
+    /* Max-Width erhöht, damit es auf großen Monitoren nicht "stehen bleibt" */
+    max-width: 1200px; 
+    
+    padding: calc(var(--grid-width) * 0.03);
     z-index: 5;
-    justify-items: start; /* Richtet die Icons innerhalb der Zellen links aus */
+    justify-items: start;
+}
+
+.skill-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
 }
 
 .skill-icon {
-    max-width: 80px;
+    /* Das Icon nimmt einen proportionalen Teil der Grid-Breite ein */
+    width: calc(var(--grid-width) * 0.12); 
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+    
+    /* Sicherheitshalber ein Limit für riesige Screens */
+    max-width: 150px; 
 }
 
-/* Sondergröße für Figma auf Desktop */
+/* Sondergröße für Figma proportional beibehalten */
 .figma-icon {
-    max-width: 60px;
+    width: calc(var(--grid-width) * 0.09); 
+    max-width: 110px;
 }
-
 
 /* --- MOBILE OPTIMIERUNG --- */
 @media (max-width: 768px) {

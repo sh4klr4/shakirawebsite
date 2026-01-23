@@ -1,9 +1,8 @@
 import React from 'react';
-// 1. Importiere 'motion' von framer-motion
 import { motion } from 'framer-motion';
 import '../pages/pagescss/InfoPage.css';
 
-// --- BILD IMPORTE (unverändert) ---
+// --- BILD IMPORTE ---
 import Unity from '../assets/images/skilllogo/unity.png';
 import Blender from '../assets/images/skilllogo/Blender.png';
 import C from '../assets/images/skilllogo/C.png';
@@ -22,7 +21,6 @@ import TypeScript from '../assets/images/skilllogo/TypeScript.png';
 
 const SkillGrid = () => {
   
-  // SKILLS LISTE (unverändert)
   const skills = [
     { name: 'Java', img: Java },
     { name: 'C', img: C },
@@ -58,23 +56,6 @@ const SkillGrid = () => {
     }
   };
 
-  // --- ANIMATIONS-VARIANTEN (unverändert) ---
-  const itemStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer',
-  };
-
-  // NUR noch die Basis-Styles hier lassen
-  const baseImageStyle = {
-    width: '100%',
-    height: 'auto',
-    objectFit: 'contain',
-    filter: 'drop-shadow(0px 4px 6px rgba(0,0,0,0.1))'
-  };
-
   return (
     <motion.div 
       className="skill-grid-container"
@@ -86,7 +67,7 @@ const SkillGrid = () => {
       {skills.map((skill, index) => (
         <motion.div 
           key={index} 
-          style={itemStyle}
+          className="skill-item-wrapper"
           variants={itemVariants}
           whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.95 }}
@@ -95,9 +76,7 @@ const SkillGrid = () => {
             src={skill.img} 
             alt={skill.name} 
             title={skill.name} 
-            /* Wir geben Figma eine eigene Klasse statt Inline-Styles */
             className={`skill-icon ${skill.name === 'Figma' ? 'figma-icon' : ''}`}
-            style={baseImageStyle} 
           />
         </motion.div>
       ))}

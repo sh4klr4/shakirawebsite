@@ -82,13 +82,12 @@ canvas {
 
 @media (min-width: 1800px){
     .flower-container{
-        width: 38vw;
-        height: 38vw;
-        left: 14%;
+        width: 28vw;
+        height: 28vw;
     }
 
     .flower-video{
-        transform: scale(2);
+        transform: scale(1.65);
     }
 }
 
