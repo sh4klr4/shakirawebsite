@@ -1,12 +1,19 @@
+:root {
+    /* Die Basisbreite der Karte in Viewport-Einheiten (ca. 400px bei 1440px Breite) */
+    --card-base-width: 30vw; 
+    /* Das Seitenverhältnis der Karte (400x250 -> 0.625) */
+    --card-base-height: calc(var(--card-base-width) * 0.64);
+}
 
-
-/* --- KEEP YOUR SCENE & OBJECT SETTINGS (Do not change these) --- */
 .card-scene {
     position: absolute;
-    width: 400px;
-    height: 250px;
-    perspective: 1200px; /* Erhöht für tieferen 3D-Effekt */
+    width: var(--card-base-width);
+    height: var(--card-base-height);
+    perspective: 1200px;
     z-index: 10;
+    /* Damit die Karte auf kleinen Bildschirmen nicht verschwindet: */
+    min-width: 450px;
+    min-height: 25px;
 }
 
 .card-object {
@@ -14,56 +21,39 @@
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    /* Wir entfernen 'animation: spin' hier komplett! */
     will-change: transform;
 }
 
-.card-object.is-snapping {
-    animation: none;
-}
-
-
-/* --- THE MISSING ANIMATION ENGINE --- */
-@keyframes spin {
-  from { transform: rotateY(0deg); }
-  to   { transform: rotateY(360deg); }
-}
-
-/* --- FACE STYLING (Glassmorphism retained) --- */
+/* --- FACE STYLING --- */
 .personcard.face {
-    position: absolute; width: 100%; height: 100%;
-    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    position: absolute; 
+    width: 100%; 
+    height: 100%;
+    backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden;
     top: 0;   
     left: 0;      
-    margin: 0;
-    /* Layout Logic for the new design */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes Top/Bottom rows to edges */
-    padding: 25px; /* Generous padding like the image */
+    justify-content: space-between; 
+    padding: calc(var(--card-base-width) * 0.06); /* Proportionales Padding */
     box-sizing: border-box;
     
-    /* Your Glass Styles */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border-radius: calc(var(--card-base-width) * 0.05); /* Proportionale Ecken */
+    box-shadow: 0 calc(var(--card-base-width) * 0.02) calc(var(--card-base-width) * 0.1) rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(96, 93, 93, 0.1) 100%);
-    border-top: 1px solid rgba(255, 255, 255, 0.8);
-    border-left: 1px solid rgba(255, 255, 255, 0.8);
     color: #333;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
 }
 
-/* --- FRONT FACE LAYOUT --- */
+/* --- FRONT FACE --- */
 .face.front { z-index: 2; transform: rotateY(0deg); }
-.face.back {
-    transform: rotateY(180deg);
-}
+.face.back { transform: rotateY(180deg); }
 
-/* Top & Bottom Rows */
 .card-row {
     display: flex;
     justify-content: space-between;
@@ -71,67 +61,52 @@
 }
 
 .small-label {
-    font-size: 0.8rem;
+    font-size: calc(var(--card-base-width) * 0.035); /* Skalierende Schrift */
     color: #666;
     font-weight: 300;
 }
 
-/* Middle Section */
 .card-main-content {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: calc(var(--card-base-width) * 0.05);
 }
 
 .card-photo {
-    width: 85px;
-    height: 120px;
-    border-radius: 12px;
+    width: calc(var(--card-base-width) * 0.22);
+    height: calc(var(--card-base-width) * 0.31);
+    border-radius: calc(var(--card-base-width) * 0.03);
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.card-text-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-}
-
 .card-name {
-    font-size: 1.3rem;
+    font-size: calc(var(--card-base-width) * 0.05); /* Skalierende Schrift */
     font-weight: 400;
-    margin: 0 0 5px 0;
+    margin: 0 0 0.2em 0;
     color: #111;
     line-height: 1.2;
 }
 
 .card-role {
-    font-size: 0.75rem;
+    font-size: calc(var(--card-base-width) * 0.028);
     color: #555;
-    margin: 2px 0;
+    margin: 0.1em 0;
     font-weight: 400;
 }
 
-/* --- BACK FACE LAYOUT --- */
+/* --- BACK FACE --- */
 .face.back {
-    transform: rotateY(180deg);
-    /* Back uses different padding to handle the magnetic strip */
     padding: 0; 
     align-items: center;
     justify-content: space-between;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .magnetic-strip {
     width: 100%;
-    height: 40px;
+    height: calc(var(--card-base-width) * 0.1);
     background: #000;
-    margin-top: 25px; /* Space from top edge */
+    margin-top: calc(var(--card-base-width) * 0.06);
 }
 
 .back-content {
@@ -142,8 +117,8 @@
 }
 
 .signature {
-    font-family: 'Edwardian Script', cursive; /* Elegant script font */
-    font-size: 3rem;
+    font-family: 'Edwardian Script', cursive; 
+    font-size: calc(var(--card-base-width) * 0.15); /* Skalierende Unterschrift */
     color: #000;
 }
 
@@ -151,11 +126,11 @@
     width: 100%;
     height: 1px;
     background: #333;
-    margin-bottom: 10px;
+    margin-bottom: 0.5em;
 }
 
 .copyright {
-    font-size: 0.6rem;
+    font-size: calc(var(--card-base-width) * 0.022);
     color: #666;
     text-align: center;
     line-height: 1.4;
@@ -164,9 +139,9 @@
 .back-footer {
     width: 100%;
     text-align: center;
-    font-size: 0.65rem;
-    letter-spacing: 1px;
-    padding-bottom: 25px;
+    font-size: calc(var(--card-base-width) * 0.025);
+    letter-spacing: 0.1em;
+    padding-bottom: calc(var(--card-base-width) * 0.06);
     color: #333;
     font-weight: 300;
 }

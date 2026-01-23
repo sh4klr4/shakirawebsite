@@ -7,10 +7,10 @@ const IDCard = ({ top = '31%', right = '6%', className = "" }) => {
   const [isHovered, setIsHovered] = useState(false);
   const requestRef = useRef();
 
-  // Die Animations-Schleife
+  // Die Animations-Schleife (Logik beibehalten)
   const animate = () => {
     if (!isHovered) {
-      setAngle((prevAngle) => (prevAngle + 0.5) % 3600); // 0.5 ist die Geschwindigkeit
+      setAngle((prevAngle) => (prevAngle + 0.5) % 3600); 
     }
     requestRef.current = requestAnimationFrame(animate);
   };
@@ -22,7 +22,6 @@ const IDCard = ({ top = '31%', right = '6%', className = "" }) => {
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    // Berechne den nächsten vollen 180° Winkel (0, 180, 360, 540...)
     const snappedAngle = Math.round(angle / 180) * 180;
     setAngle(snappedAngle);
   };

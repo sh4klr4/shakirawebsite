@@ -74,14 +74,17 @@ canvas {
 
 .id-card-wrapper {
     position: absolute;
-    top: 120vh;
+    top: 115vh;
     right: 15%;
     z-index: 60;
+    transition: transform 0.2s ease-out;
 }
 
 @media (min-width: 1800px){
-    .id-card-wrapper{
-        transform: scale(1.5);
+    .flower-container{
+        width: 38vw;
+        height: 38vw;
+        left: 14%;
     }
 
     .flower-video{
