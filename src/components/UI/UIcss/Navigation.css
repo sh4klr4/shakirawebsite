@@ -95,6 +95,7 @@
 
     color: #787878;
     font-size: clamp(16px, 1.1vw, 22px);  
+    font-weight: 200;
     line-height: 1.5; 
     pointer-events: none; 
     letter-spacing: 0.15rem;

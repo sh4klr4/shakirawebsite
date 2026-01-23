@@ -84,10 +84,11 @@ canvas {
     .flower-container{
         width: 28vw;
         height: 28vw;
+        left: 12%;
     }
 
     .flower-video{
-        transform: scale(1.65);
+        transform: scale(1.7);
     }
 }
 
