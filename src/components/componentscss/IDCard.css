@@ -7,6 +7,8 @@
     height: 250px;
     perspective: 1200px; /* Erhöht für tieferen 3D-Effekt */
     z-index: 10;
+    transform: scale(clamp(0.7, calc(0.5rem + 1vw), 2));
+    transform-origin: center center;
 }
 
 .card-object {

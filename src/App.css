@@ -30,7 +30,7 @@ html, body {
     overflow-x: hidden !important;
     overflow-y: auto;
     background-color: transparent;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter';
     position: relative;
 }
 
@@ -77,7 +77,6 @@ canvas {
     top: 120vh;
     right: 15%;
     z-index: 60;
-    transform: scale(clamp(0.7, 8vw, 2)); 
 }
 
 /* --- MOBILE SPECIFIC REFINEMENTS --- */
