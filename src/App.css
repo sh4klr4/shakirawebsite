@@ -77,12 +77,15 @@ canvas {
     top: 120vh;
     right: 15%;
     z-index: 60;
-    transform: scale(1) !important;
 }
 
-@media (min-width: 1600px){
+@media (min-width: 1800px){
     .id-card-wrapper{
         transform: scale(1.5);
+    }
+
+    .flower-video{
+        transform: scale(2);
     }
 }
 
