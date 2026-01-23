@@ -15,7 +15,7 @@ const educationData = [
       'Core Curriculum (80%): Deep dive into Computer Science fundamentals including Software Engineering, Data Structures, Algorithms, and Database Systems.',
       'Specialization (20%): Focused on Human-Computer Interaction (HCI) and User Experience Design, bridging the gap between code and psychology.',
       'Practical Projects: Development of machine learning projects, multiplayer games, interactive web applications and high-fidelity prototypes using Java, React, Figma, and Python.',
-      'Thesis: Currently looking and preparing Bachelor Thesis, interested in UI/UX, AR/VR and AI and wanting to develop an end project or application.'
+      'Thesis: Currently looking and preparing Bachelor Thesis, interested in UI/UX, AR/VR and AI and wanting to develop an end product or application.'
     ]
   },
   {
