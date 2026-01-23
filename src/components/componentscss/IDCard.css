@@ -5,6 +5,13 @@
     --card-base-height: calc(var(--card-base-width) * 0.64);
 }
 
+@media (max-width: 768px) {
+    :root {
+        /* Auf dem Handy soll die Karte ca. 85% der Bildschirmbreite einnehmen */
+        --card-base-width: 85vw; 
+    }
+}
+
 .card-scene {
     position: absolute;
     width: var(--card-base-width);
@@ -12,8 +19,7 @@
     perspective: 1200px;
     z-index: 10;
     /* Damit die Karte auf kleinen Bildschirmen nicht verschwindet: */
-    min-width: 450px;
-    min-height: 25px;
+    min-width: 280px;
 }
 
 .card-object {
