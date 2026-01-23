@@ -77,7 +77,8 @@ canvas {
     top: 120vh;
     right: 15%;
     z-index: 60;
-    transform: scale(clamp(1.0, 10vw, 1.8));
+    transform: scale(clamp(1.0, calc(0.5 + 1.2vw), 2.5)) !important;
+    transform-origin: right center;
 }
 
 /* --- MOBILE SPECIFIC REFINEMENTS --- */
