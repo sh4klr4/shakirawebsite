@@ -52,7 +52,7 @@ const IDCard = ({ top = '31%', right = '6%', className = "" }) => {
             </div>
             <div className='card-main-content'>
                 <div className='card-photo-wrapper'>
-                    <img src={profilePic} alt="Profile" className='card-photo' />
+                    <img src={profilePic} alt="Profile" className='card-photo' loading="lazy" decoding="async"/>
                 </div>
                 <div className='card-text-group'>
                     <h2 className='card-name'>Shakira Laura Putri Bassl</h2>

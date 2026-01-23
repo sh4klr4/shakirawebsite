@@ -24,6 +24,7 @@ const CodingAgentComponent = () => {
         <img 
           src={terminalHero} 
           alt="AI Agent Terminal Workflow" 
+          loading="lazy" decoding="async"
           className="ca-hero-img" 
         />
       </div>
@@ -57,10 +58,10 @@ const CodingAgentComponent = () => {
           {/* Code Grid Section */}
           <div className="ca-grid">
             <div className="ca-item">
-              <img src={codeBefore} alt="Code Logic Before" />
+              <img src={codeBefore} alt="Code Logic Before" loading="lazy" decoding="async"/>
             </div>
             <div className="ca-item">
-              <img src={codeAfter} alt="Code Logic After" />
+              <img src={codeAfter} alt="Code Logic After" loading="lazy" decoding="async"/>
             </div>
             
             <div className="ca-text-block">

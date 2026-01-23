@@ -12,14 +12,9 @@ import art8 from '../assets/images/artimages/Eyes.jpg';
 import art2 from '../assets/images/artimages/Alien1.JPG';
 import art6 from '../assets/images/artimages/Mermaids.JPG';
 
-// Optional: Falls du die Animation nutzen willst, importiere sie hier
-// import { Typewriter } from '../components/TextAnimations';
-
 const ArtGallery = () => {
-  // State speichert jetzt das ganze Objekt (src + name) oder null
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // 1. NEUE DATENSTRUKTUR: Objekte statt nur Pfade
   const myImages = [
     { src: art1, name: 'Vogel Stillleben' },
     { src: art2, name: 'Alien' },
@@ -36,7 +31,6 @@ const ArtGallery = () => {
   const singleGridSet = Array.from({ length: 10 }, (_, i) => myImages[i] || null);
   const loopSets = [1, 2, 3];
 
-  // item ist jetzt das Objekt { src, name }
   const openModal = (item) => {
     setSelectedImage(item);
   };
@@ -64,7 +58,6 @@ const ArtGallery = () => {
             cursor: pointer;
           }
 
-          /* --- DEIN CSS FÜR DIE CAPTION --- */
           .artwork-caption {
             position: absolute;        
             left: 8%;                 
@@ -72,31 +65,26 @@ const ArtGallery = () => {
             color: #787878;                  
             font-size: clamp(16px, 1.0vw, 22px);          
             letter-spacing: 2px;
-            z-index: 100; /* Sicherstellen, dass es über dem Marquee liegt */
-            pointer-events: none; /* Klicks gehen durch zum Marquee */
+            z-index: 100;
+            pointer-events: none;
           }
         `}
       </style>
 
-      {/* 2. CAPTION LOGIK */}
       <div className="artwork-caption">
-         {/* Wenn ein Bild ausgewählt ist, zeige den Namen, sonst "Drawings" */}
          [{selectedImage ? selectedImage.name : "Drawings"}]
-
-         {/* Falls du die Typewriter Animation von vorhin nutzen willst, 
-             ersetze die Zeile oben hiermit: 
-             <Typewriter text={`[${selectedImage ? selectedImage.name : "Drawings"}]`} />
-         */}
       </div>
 
       {/* MODAL */}
       {selectedImage && (
         <div style={styles.modalOverlay} onClick={closeModal}>
           <img 
-            src={selectedImage.src} // WICHTIG: Jetzt .src zugreifen
+            src={selectedImage.src} 
             alt={selectedImage.name} 
             style={styles.modalImage}
             onClick={(e) => e.stopPropagation()} 
+            loading="lazy"
+            decoding="async"
           />
         </div>
       )}
@@ -107,7 +95,7 @@ const ArtGallery = () => {
             {singleGridSet.map((item, index) => (
               <GalleryItem 
                 key={`${setNum}-${index}`} 
-                item={item} // Wir übergeben das ganze Item
+                item={item} 
                 index={index}
                 onClick={() => openModal(item)}
               />
@@ -119,16 +107,17 @@ const ArtGallery = () => {
   );
 };
 
-// GalleryItem angepasst, um mit Objekten umzugehen
 const GalleryItem = ({ item, index, onClick }) => (
   <div style={styles.cellWrapper}>
     {item && (
       <img 
-        src={item.src} // Zugriff auf .src
+        src={item.src} 
         alt={item.name} 
         className="gallery-img"
         style={styles.artworkImage}
         onClick={onClick}
+        loading="lazy"      /* Optimierung für den Arbeitsspeicher */
+        decoding="async"    /* Optimierung für die CPU-Last */
       />
     )}
   </div>
@@ -142,7 +131,7 @@ const styles = {
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: 'transparent', // Falls nötig
+    backgroundColor: 'transparent',
   },
 
   marqueeTrack: {
@@ -197,7 +186,7 @@ const styles = {
     objectFit: 'contain',
     borderRadius: '4px',
     cursor: 'default',
-    boxShadow: '0 20px 50px rgba(0,0,0,0.5)' // Optional: Schatten für Tiefe
+    boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
   }
 };
 

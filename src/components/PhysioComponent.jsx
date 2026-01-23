@@ -26,6 +26,8 @@ const PhysioComponent = () => {
           src={physioMockup} 
           alt="Physio Orb Laptop Hero" 
           className="hero-img" 
+          loading="lazy" 
+          decoding="async"
         />
       </div>
 
@@ -57,13 +59,13 @@ const PhysioComponent = () => {
           
           <div className="ui-grid">
             <div className="ui-item">
-              <img src={uiDashboard} alt="Dashboard UI" />
+              <img src={uiDashboard} alt="Dashboard UI" loading="lazy" decoding="async"/>
             </div>
             <div className="ui-item">
-              <img src={uiTracking} alt="Live Tracking UI" />
+              <img src={uiTracking} alt="Live Tracking UI" loading="lazy" decoding="async"/>
             </div>
             <div className="ui-item">
-              <img src={uiProgress} alt="Progress UI" />
+              <img src={uiProgress} alt="Progress UI" loading="lazy" decoding="async"/>
             </div>
             <div className="ui-text-block">
               <p>
@@ -90,7 +92,7 @@ const PhysioComponent = () => {
               loop 
               muted 
               playsInline
-              preload="auto"
+              preload="metadata"
             >
                <source src={scrollVideo} type="video/mp4" />
             </video>

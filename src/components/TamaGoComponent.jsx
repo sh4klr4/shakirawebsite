@@ -37,6 +37,7 @@ const TamaGoComponent = () => {
           src={tamagoHero} 
           alt="Tamago App Hero" 
           className="tamago-hero-img" 
+          loading="lazy" decoding="async"
         />
       </div>
 
@@ -72,37 +73,37 @@ const TamaGoComponent = () => {
           <div className="tamago-cluster-grid">
             <div className="cluster-col col-left">
               <video src={eggsVideo} type="video/mp4" className="tamago-phone-media" 
-              autoPlay loop muted playsInline preload="auto"/>
-                <img src={pixelAnimals} alt="Pixel Animals" className="animals-img" />
+              autoPlay loop muted playsInline preload="metadata"/>
+                <img src={pixelAnimals} alt="Pixel Animals" className="animals-img" loading="lazy" decoding="async"/>
             </div>
 
             <div className="cluster-col col-center">
                 <div className="asset-top">
-                   <img src={colorSwatch} alt="Color Swatches" className="swatch-img" />
+                   <img src={colorSwatch} alt="Color Swatches" className="swatch-img" loading="lazy" decoding="async"/>
                 </div>
             </div>
 
             <div className="cluster-col col-right">
                 <div className="asset-top">
-                   <img src={appIcon} alt="App Icon" className="app-icon-img" />
+                   <img src={appIcon} alt="App Icon" className="app-icon-img" loading="lazy" decoding="async"/>
                 </div>
                 <div className="asset-bottom">
                    <video src={startVideo} type="video/mp4" className="tamago-phone-media" 
-                   autoPlay loop muted playsInline preload="auto"/>
+                   autoPlay loop muted playsInline preload="metadata"/>
                 </div>
             </div>
           </div>
 
           <div className="tamago-middle-grid-3col">
              <div className="grid-cell centered">
-                <img src={statsUi} alt="Stats Screen 1" className="tamago-phone-media" />
+                <img src={statsUi} alt="Stats Screen 1" className="tamago-phone-media" loading="lazy" decoding="async"/>
              </div>
              <div className="grid-cell centered">
                 <video src={friendVideo} type="video/mp4" className="tamago-phone-media" 
-                autoPlay loop muted playsInline preload="auto"/>
+                autoPlay loop muted playsInline preload="metadata"/>
              </div>
              <div className="grid-cell centered">
-                <img src={routeUi} alt="Stats Screen 2" className="tamago-phone-media" />
+                <img src={routeUi} alt="Stats Screen 2" className="tamago-phone-media" loading="lazy" decoding="async"/>
              </div>
           </div>
 
@@ -112,6 +113,7 @@ const TamaGoComponent = () => {
                    src={tamagoFooter} 
                    alt="Tamago Angled Screens" 
                    className="tamago-footer-img" 
+                   loading="lazy" decoding="async"
                  />
               </div>
 

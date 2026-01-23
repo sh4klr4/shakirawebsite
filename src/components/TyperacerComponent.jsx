@@ -24,6 +24,7 @@ const TyperacerComponent = () => {
           src={typeRacerHero} 
           alt="TypeRacer Hero" 
           className="tr-hero-img" 
+          loading="lazy" decoding="async"
         />
       </div>
 
@@ -55,10 +56,10 @@ const TyperacerComponent = () => {
           
           <div className="tr-grid">
             <div className="tr-item">
-              <img src={screen1} alt="TypeRacer Menu" />
+              <img src={screen1} alt="TypeRacer Menu" loading="lazy" decoding="async"/>
             </div>
             <div className="tr-item">
-              <img src={screen2} alt="TypeRacer Gameplay" />
+              <img src={screen2} alt="TypeRacer Gameplay" loading="lazy" decoding="async"/>
             </div>
             
             <div className="tr-text-block">

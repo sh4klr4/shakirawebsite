@@ -73,7 +73,7 @@ const EducationSection = () => {
                         style={{ animationDelay: showCards ? `${index * 0.15}s` : '0s' }}
                     >
                         <div className="logo-wrapper">
-                            <img src={school.logo} alt="logo" className="company-logo" />
+                            <img src={school.logo} alt="logo" className="company-logo" loading="lazy" decoding="async"/>
                         </div>
                         <div className="content-wrapper">
                             <div className="job-header">
