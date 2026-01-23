@@ -77,9 +77,13 @@ canvas {
     top: 120vh;
     right: 15%;
     z-index: 60;
-    transform: scale(calc(1.5 + (1vw * 1.5))) !important;
-    outline: 3px solid rgba(255, 0, 0, 0.3);
-    transform-origin: right center;
+    transform: scale(1) !important;
+}
+
+@media (min-width: 1600px){
+    .id-card-wrapper{
+        transform: scale(1.5);
+    }
 }
 
 /* --- MOBILE SPECIFIC REFINEMENTS --- */
