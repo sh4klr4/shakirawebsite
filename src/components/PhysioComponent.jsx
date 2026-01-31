@@ -26,7 +26,7 @@ const PhysioComponent = () => {
           src={physioMockup} 
           alt="Physio Orb Laptop Hero" 
           className="hero-img" 
-          loading="lazy" 
+          fetchpriority="high" 
           decoding="async"
         />
       </div>

@@ -77,7 +77,6 @@ const SkillGrid = () => {
             alt={skill.name} 
             title={skill.name} 
             className={`skill-icon ${skill.name === 'Figma' ? 'figma-icon' : ''}`}
-            loading="lazy"
             decoding="async"
           />
         </motion.div>

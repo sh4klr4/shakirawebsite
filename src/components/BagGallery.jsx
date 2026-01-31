@@ -49,7 +49,7 @@ const BagGallery = () => {
                   src={bag.imgMain} 
                   className={`bag-img ${hoveredId === bag.id ? 'hidden' : 'visible'}`} 
                   alt={`${bag.name} view 1`}
-                  loading="lazy" 
+                  fetchpriority="high"
                   decoding="async" 
                 />
                 <img 

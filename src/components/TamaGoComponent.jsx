@@ -37,7 +37,7 @@ const TamaGoComponent = () => {
           src={tamagoHero} 
           alt="Tamago App Hero" 
           className="tamago-hero-img" 
-          loading="lazy" decoding="async"
+          fetchpriority="high" decoding="async"
         />
       </div>
 

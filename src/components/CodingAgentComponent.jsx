@@ -24,7 +24,7 @@ const CodingAgentComponent = () => {
         <img 
           src={terminalHero} 
           alt="AI Agent Terminal Workflow" 
-          loading="lazy" decoding="async"
+          fetchpriority="high" decoding="async"
           className="ca-hero-img" 
         />
       </div>

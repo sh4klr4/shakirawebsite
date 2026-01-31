@@ -6,18 +6,29 @@ const IDCard = ({ top = '31%', right = '6%', className = "" }) => {
   const [angle, setAngle] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const requestRef = useRef();
+  const previousTimeRef = useRef(); // Speichert den Zeitstempel des letzten Frames
 
-  // Die Animations-Schleife (Logik beibehalten)
-  const animate = () => {
-    if (!isHovered) {
-      setAngle((prevAngle) => (prevAngle + 0.5) % 3600); 
+  const animate = (time) => {
+    if (previousTimeRef.current !== undefined) {
+      // Berechne die vergangene Zeit in Millisekunden
+      const deltaTime = time - previousTimeRef.current;
+
+      if (!isHovered) {
+        // 0.03 ist nun deine konstante Geschwindigkeit (Grad pro Millisekunde)
+        
+        setAngle((prevAngle) => (prevAngle + 0.05 * deltaTime) % 3600);
+      }
     }
+    previousTimeRef.current = time;
     requestRef.current = requestAnimationFrame(animate);
   };
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current);
+    return () => {
+        cancelAnimationFrame(requestRef.current);
+        previousTimeRef.current = undefined; // Reset bei Unmount
+    };
   }, [isHovered]);
 
   const handleMouseEnter = () => {
