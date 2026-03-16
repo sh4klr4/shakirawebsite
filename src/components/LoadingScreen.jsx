@@ -74,6 +74,15 @@ const LoadingScreen = ({ onFinished }) => {
           >
             {Math.round(progress)}%
           </motion.div>
+
+          <div style={{ 
+            fontFamily: 'Edwardian Script',
+            opacity: 0, 
+            position: 'absolute', 
+            pointerEvents: 'none' 
+          }}>
+            preload
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
