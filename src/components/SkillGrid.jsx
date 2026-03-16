@@ -5,29 +5,29 @@ import '../pages/pagescss/InfoPage.css';
 // --- BILD IMPORTE ---
 import Unity from '../assets/images/skilllogo/unity.png';
 import Blender from '../assets/images/skilllogo/Blender.png';
-import C from '../assets/images/skilllogo/C.png';
 import Csharp from '../assets/images/skilllogo/Csharp.png';
+import Adobe from '../assets/images/skilllogo/adobe.png';
 import css from '../assets/images/skilllogo/css.png';
 import Figma from '../assets/images/skilllogo/Figma.png';
 import HTML from '../assets/images/skilllogo/HTML.png';
 import Java from '../assets/images/skilllogo/Java.png';
 import JavaScript from '../assets/images/skilllogo/JavaScript.png';
 import Github from '../assets/images/skilllogo/github.png';
-import photoshop from '../assets/images/skilllogo/photoshop.png';
+import VisualStudio from '../assets/images/skilllogo/visualstudio.png';
 import Python from '../assets/images/skilllogo/Python.png';
 import ReactLogo from '../assets/images/skilllogo/React.png';
-import Rust from '../assets/images/skilllogo/Rust.png';
+import Unreal from '../assets/images/skilllogo/unreal.svg';
 import TypeScript from '../assets/images/skilllogo/TypeScript.png';
 
 const SkillGrid = () => {
   
   const skills = [
     { name: 'Java', img: Java },
-    { name: 'C', img: C },
-    { name: 'C#', img: Csharp },
+    { name: 'Csharp', img: Csharp },
+    { name: 'Adobe', img: Adobe },
     { name: 'Python', img: Python },
     { name: 'React', img: ReactLogo },
-    { name: 'Rust', img: Rust },
+    { name: 'Unreal', img: Unreal },
     { name: 'HTML', img: HTML },
     { name: 'CSS', img: css },
     { name: 'JavaScript', img: JavaScript },
@@ -36,7 +36,7 @@ const SkillGrid = () => {
     { name: 'Github', img: Github },
     { name: 'Figma', img: Figma },
     { name: 'Blender', img: Blender },
-    { name: 'Photoshop', img: photoshop },
+    { name: 'VisualStudio', img: VisualStudio },
   ];
 
   const containerVariants = {

@@ -8,17 +8,28 @@ import loaderVideoMov from '../assets/images/artimages/flowerload.mp4';
 const LoadingScreen = ({ onFinished }) => {
   const { progress } = useProgress(); 
   const [isFinished, setIsFinished] = useState(false);
+  
+  // NEU: State, um zu checken, ob die Schriften da sind
+  const [fontsLoaded, setFontsLoaded] = useState(false); 
 
+  // NEU: Sobald die Schriften vom Browser geladen wurden, setze auf true
   useEffect(() => {
-    if (progress === 100) {
-      // Warte kurz, wenn 100% erreicht sind, dann starte das Ausblenden
+    document.fonts.ready.then(() => {
+      setFontsLoaded(true);
+    });
+  }, []);
+
+  // ANGEPASST: Warte jetzt auf progress === 100 UND fontsLoaded === true
+  useEffect(() => {
+    if (progress === 100 && fontsLoaded) {
+      // Warte kurz, wenn alles geladen ist, dann starte das Ausblenden
       const timer = setTimeout(() => {
         setIsFinished(true);
         if (onFinished) onFinished(); // Melde der HomePage: "Ich bin fertig!"
       }, 800); 
       return () => clearTimeout(timer);
     }
-  }, [progress, onFinished]);
+  }, [progress, fontsLoaded, onFinished]); // fontsLoaded zu den Dependencies hinzugefügt
 
   return (
     <AnimatePresence>
@@ -32,9 +43,9 @@ const LoadingScreen = ({ onFinished }) => {
             position: 'fixed',
             top: 0, left: 0,
             width: '100vw', height: '100vh',
-            zIndex: 2000, // Sehr hoch, damit es über der Nav liegt
+            zIndex: 2000, 
             display: 'flex',
-            flexDirection: 'column', // Video über Text
+            flexDirection: 'column', 
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: '#ffffff', 

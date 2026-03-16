@@ -8,15 +8,14 @@ const experienceData = [
     id: 'mtu',
     company: 'MTU Aero Engines',
     role: 'Operations Engineer Working Student',
-    date: 'October 2023 – Present',
+    date: 'October 2025 – Present',
     location: 'Munich, Germany',
     logo: logo1,
     bullets: [
-      'App Development: Developed user-centric Power Apps interfaces to streamline error handling for manufacturing teams.',
+      'App Development & User Interface Design: Developed user-centric Power Apps interfaces to streamline error handling for manufacturing teams.',
       'Data Visualization: Developed Python application using PyQt6 to represent and visualize data from internal database.',
       'Workflow Automation: Built Power Automate workflows to optimize quality control processes and data logging.',
-      'RPA Implementation: Deployed UiPath bots to automate complex data extraction from internal systems.',
-      'Requirements Analysis: Collaborated with engineering teams to define requirements and enhance industrial software tools.'
+      'RPA Implementation: Deployed UiPath bots to automate complex data extraction from internal systems.'
     ]
   },
   {
@@ -27,7 +26,7 @@ const experienceData = [
     location: 'Vimercate, Italy',
     logo: logo2,
     bullets: [
-      'Full Stack Development: Built a web admin interface on Azure Cloud using ASP.NET (MVC) and C#.',
+      'Full Stack Development & User Interface Design: Built a web admin interface on Azure Cloud using ASP.NET (MVC) and C#.',
       'Project Lead: Delivered a notification system from requirements to deployment using MS Automation and Power Apps.',
       'Data Engineering: Developed a C# module to parse Excel data into Dataverse for Machine Learning readiness.',
       'DevOps: Managed code via Azure DevOps and maintained database schemas across multiple SQL nodes.'
