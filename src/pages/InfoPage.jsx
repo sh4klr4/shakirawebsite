@@ -13,9 +13,9 @@ const InfoPage = () => {
         <div>
             <div className="hero-section">
                 <BlurFadeWrapper className='description-rt'>
-                    Hello World! I'm Shakira Bassl and<br/>
-                    interested in design and software<br/>
-                    development work. I have 6+ years of<br/>
+                    I'm Shakira Bassl and interested<br/>
+                    in the intersection of technology <br/>
+                    and design. I have 6+ years of<br/>
                     coding experience, am passionate <br/>
                     about art, fashion, UI/UX, 3D design. Also <br/>
                     always looking for my next challenge.<br/>
@@ -23,7 +23,7 @@ const InfoPage = () => {
                 </BlurFadeWrapper>
                 
                 <BlurFadeWrapper className='description-caption-rbt'>
-                    [currently looking for a Bachelor Thesis]
+                    [Hello World!]
                 </BlurFadeWrapper>
             </div>
 
