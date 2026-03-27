@@ -5,6 +5,7 @@ import './pagescss/CodePage.css';
 import CodingAgentComponent from '../components/CodingAgentComponent';
 import TyperacerComponent from '../components/TyperacerComponent';
 import { BlurFadeWrapper } from '../components/TextAnimation';
+import MetahumanComponent from '../components/MetahumanComponent';
 
 const CodePage = () => {
   return (
@@ -26,6 +27,7 @@ const CodePage = () => {
         </BlurFadeWrapper>
       </div>
       {/* Content Wrapper - startet nach 100vh */}
+      <MetahumanComponent/>
       <CodingAgentComponent/>
       <TyperacerComponent/>
     </div>
