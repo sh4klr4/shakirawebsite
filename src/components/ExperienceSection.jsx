@@ -12,9 +12,9 @@ const experienceData = [
     location: 'Munich, Germany',
     logo: logo1,
     bullets: [
-      'App Development & User Interface Design: Developed user-centric Power Apps interfaces to streamline error handling for manufacturing teams.',
-      'Data Visualization: Developed Python application using PyQt6 to represent and visualize data from internal database.',
-      'Workflow Automation: Built Power Automate workflows to optimize quality control processes and data logging.',
+      'Web-App Full-Stack Development & UI Design: Developed Python application using Dash and FastAPI to represent and visualize data from internal database and insure secure and fast login.',
+      'App Development & UI Design: Developed user-centric Power Apps interfaces to streamline error handling for manufacturing teams.',
+      'Workflow Automation: Built Power Automate workflows to optimize quality control processes.',
       'RPA Implementation: Deployed UiPath bots to automate complex data extraction from internal systems.'
     ]
   },
@@ -26,7 +26,7 @@ const experienceData = [
     location: 'Vimercate, Italy',
     logo: logo2,
     bullets: [
-      'Full Stack Development & User Interface Design: Built a web admin interface on Azure Cloud using ASP.NET (MVC) and C#.',
+      'Web-App Full-Stack Development & UI Design: Built a web admin interface on Azure Cloud using ASP.NET (MVC) and C#.',
       'Project Lead: Delivered a notification system from requirements to deployment using MS Automation and Power Apps.',
       'Data Engineering: Developed a C# module to parse Excel data into Dataverse for Machine Learning readiness.',
       'DevOps: Managed code via Azure DevOps and maintained database schemas across multiple SQL nodes.'
