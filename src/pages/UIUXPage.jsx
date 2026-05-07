@@ -3,6 +3,7 @@ import './pagescss/UIUXPage.css';
 import PhysioComponent from '../components/PhysioComponent';
 import TamaGoComponent from '../components/TamaGoComponent';
 import { BlurFadeWrapper } from '../components/TextAnimation';
+import BMWComponent from '../components/BMW';
 
 
 const UIUXPage = () => {
@@ -23,7 +24,7 @@ const UIUXPage = () => {
           [Website designed in Figma]
         </BlurFadeWrapper>
       </div>
-
+        <BMWComponent/>
         <PhysioComponent/>
         <TamaGoComponent/>
     </div>
