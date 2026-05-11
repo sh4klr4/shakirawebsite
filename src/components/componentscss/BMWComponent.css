@@ -1,0 +1,190 @@
+/* Container Reset mit bmw- Präfix */
+.bmw-container {
+  width: 90%; 
+  max-width: 1200px;
+  background-color: #f9f9f9; 
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin: 40px auto; 
+  transition: all 0.5s ease;
+  letter-spacing: 1px;
+  height: auto; 
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bmw-container.bmw-expanded {
+  height: auto; 
+}
+
+/* --- Hero Section --- */
+.bmw-hero-wrapper {
+  width: 100%;
+  aspect-ratio: 1200 / 420;
+  overflow: hidden;
+  flex-shrink: 0; 
+}
+
+.bmw-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+/* --- Content Area --- */
+.bmw-content-area {
+  padding: 40px;
+  background-color: #fff;
+  flex-grow: 1; 
+}
+
+/* Header Grid Layout */
+.bmw-header-row {
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 0.5fr; 
+  gap: 40px;
+  cursor: pointer;
+  align-items: flex-start;
+}
+
+.bmw-titles h1 {
+  font-family: 'Helvetica Bold', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.bmw-subtitle {
+  font-size: clamp(18px, 1.2vw, 24px); 
+  color: #999;
+  font-weight: 300;
+}
+
+.bmw-intro-text p {
+  font-size: clamp(16px, 1.0vw, 20px);
+  color: #787878;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* --- Toggle Icon --- */
+.bmw-toggle-icon {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bmw-icon-bar {
+  position: absolute;
+  background-color: #000;
+  transition: transform 0.4s ease;
+}
+
+.bmw-icon-bar.bmw-horizontal { width: 100%; height: 2px; }
+.bmw-icon-bar.bmw-vertical { width: 2px; height: 100%; }
+
+.bmw-container.bmw-expanded .bmw-icon-bar.bmw-horizontal { transform: rotate(45deg); }
+.bmw-container.bmw-expanded .bmw-icon-bar.bmw-vertical { transform: rotate(45deg); }
+
+/* --- Expanded Content Animation --- */
+.bmw-expanded-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease, opacity 0.5s ease;
+}
+
+.bmw-container.bmw-expanded .bmw-expanded-details {
+  /* HIER IST DER FIX: Wert auf 6000px erhöht, damit längerer Inhalt nicht mehr abgeschnitten wird */
+  max-height: 6000px; 
+  opacity: 1;
+  margin-top: 60px;
+}
+
+/* --- Media (Bilder & Videos) --- */
+.bmw-media-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.bmw-full-width-media {
+  width: 100%;
+  display: block; /* Verhindert Lücken unter Bildern/Videos */
+  border-radius: 8px;
+}
+
+/* --- UI Grid Layout (Zentriert) --- */
+.bmw-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+.bmw-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bmw-item img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.bmw-text-block {
+  font-size: clamp(16px, 1.0vw, 20px);
+  color: #787878;
+  line-height: 1.6;
+  text-align: left;
+  margin-top: 2%;
+  margin-bottom: 4%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .bmw-container {
+    width: 90% !important;
+    margin: 20px auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  
+  .bmw-hero-wrapper{
+    aspect-ratio: 5/3;
+  }
+
+  .bmw-header-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .bmw-toggle-icon {
+    justify-self: start;
+  }
+
+  .bmw-grid {
+    grid-template-columns: 1fr;
+  }
+}
