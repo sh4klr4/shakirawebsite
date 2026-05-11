@@ -39,7 +39,7 @@ const BMWComponent = () => {
           
           <div className="ca-intro-text">
             <p>
-              Developed a dynamic material system to enable real-time vehicle color customization, 
+              Developed a dynamic material system for the BMW i3 to enable real-time vehicle color customization, 
               allowing for seamless and interactive visual changes. Additionally, made and staged 
               a short cinematic sequence using Unreal's Sequencer.
             </p>
