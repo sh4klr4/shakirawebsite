@@ -33,7 +33,7 @@ const BMWComponent = () => {
       <div className="ca-content-area">
         <div className="ca-header-row">
           <div className="ca-titles">
-            <h1>BMW <br />Concept</h1>
+            <h1>BMW i3<br />Concept</h1>
             <span className="ca-subtitle">Unreal Engine Project</span>
           </div>
           
