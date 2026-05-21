@@ -4,9 +4,11 @@ import './componentscss/BMWComponent.css';
 
 // Bilder-Imports
 import bmwhero from '../assets/images/uiuximages/bmwhero.png'; 
-import carcolor from '../assets/images/uiuximages/carcolor.mp4';
-import caruisleeping from '../assets/images/uiuximages/CarUISleeping.png'; 
-import caruiactive from '../assets/images/uiuximages/CarUIActive.png'; 
+import carcolor from '../assets/images/uiuximages/caruiunreal.mp4';
+import caruisleeping from '../assets/images/uiuximages/SleepModeUI.png'; 
+import caruisleepingcharging from '../assets/images/uiuximages/SleepModeUICharging.png'; 
+import carsleeptoawake from '../assets/images/uiuximages/riveanimation.mp4';
+import caruiactive from '../assets/images/uiuximages/ActiveModeUI.png'; 
 import cardrive from '../assets/images/uiuximages/bmwcarsequence.mp4';
 
 const BMWComponent = () => {
@@ -41,8 +43,8 @@ const BMWComponent = () => {
           
           <div className="bmw-intro-text">
             <p>
-              Developed a dynamic material system for the BMW i3 to enable real-time vehicle color customization. 
-              Designed a Homescreen UI with two modes active and sleep. 
+              Developed an Infotainment UI for the BMW i3 Neue Klasse with two modes active and sleep, as well as
+              real-time vehicle color customization. 
               Additionally, made and staged a short cinematic sequence using Unreal's Sequencer.
             </p>
           </div>
@@ -56,7 +58,73 @@ const BMWComponent = () => {
         {/* 3. Expanded Content */}
         <div className="bmw-expanded-details">
           
-            {/* Erstes Video (Car Color) */}
+            {/* 1. Side-by-Side Bilder Section (Sleeping & Charging) */}
+            <div className="bmw-media-wrapper">
+              <div className="bmw-grid">
+                <div className="bmw-item">
+                  <img 
+                      src={caruisleeping} 
+                      alt="Car UI Sleeping" 
+                  />
+                </div>
+                <div className="bmw-item">
+                  <img 
+                      src={caruisleepingcharging} 
+                      alt="Car UI Sleeping Charging" 
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Video: Sleep to Awake (Rive) */}
+            <div className="bmw-media-wrapper">
+                <video 
+                    className="bmw-full-width-media" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    preload="metadata"
+                >
+                    <source src={carsleeptoawake} type="video/mp4" />
+                </video>
+            </div>
+
+            {/* 4. Text: UI Explanation */}
+            <div className="bmw-text-block">
+              <p>
+                To optimize the user experience and reduce visual distraction, I designed a 
+                responsive infotainment interface in Figma and animated it in Rive. 
+                During periods of inactivity, the system transitions into a minimal 
+                "sleep mode," displaying only essential information, like a personalized greeting,
+                 a compact media player and a battery widget. This widget provides crucial information 
+                 at a glance, such as estimated charging time and remaining range.
+              </p>
+            </div>
+
+            {/* 3. Bild: Active Mode UI (Neu) */}
+            <div className="bmw-media-wrapper">
+                <img 
+                    src={caruiactive} 
+                    alt="Car UI Active" 
+                    className="bmw-full-width-media"
+                />
+            </div>
+                
+            {/* 4. Text: UI Explanation */}
+            <div className="bmw-text-block">
+              <p>
+                The Active Mode serves as the primary dashboard, 
+                centered around a prominent 3D representation of the vehicle. 
+                Designed for safe and intuitive interaction, the layout prioritizes 
+                immediate access to essential features. Quick-action widgets for navigation 
+                and media playback are anchored to the driver's side for easy reach, while a 
+                persistent bottom dock provides seamless access to core applications alongside 
+                dual-zone climate controls.
+              </p>
+            </div>
+
+            {/* 6. Video: Unreal Customization (Car Color) */}
             <div className="bmw-media-wrapper">
                 <video 
                     className="bmw-full-width-media" 
@@ -69,59 +137,21 @@ const BMWComponent = () => {
                     <source src={carcolor} type="video/mp4" />
                 </video>
             </div>
+
+            {/* 5. Text: Customization Tool */}
+            <div className="bmw-text-block">
+              <p>
+                I implemented a customization mode in Unreal Engine, 
+                allowing users to personalize their vehicle in the UI. To make the experience highly engaging, 
+                applying a new color instantly triggers a dynamic rolling sequence, showcasing the paint 
+                finish in motion. Additionally, interactive camera controls enable users to smoothly 
+                orbit the 3D model, providing a comprehensive view of the car from any angle.
+              </p>
+            </div>
+
             
-            <div className="bmw-text-block">
-              <p>
-                I implemented a vehicle customization tool in Unreal Engine
-                that allows customers to change the car's color in real-time 
-                via a user interface during the purchasing process. To make the experience more engaging, 
-                clicking a new color instantly triggers a short rolling sequence, 
-                allowing the user to see the new paint finish in motion.
-              </p>
-            </div>
 
-            {/* Bilder Section */}
-            <div className="bmw-media-wrapper">
-                <img 
-                    src={caruisleeping} 
-                    alt="Car UI Sleeping" 
-                    className="bmw-full-width-media"
-                    style={{ marginBottom: '20px' }}
-                />
-            </div>
-                
-            <div className="bmw-text-block">
-              <p>
-                To optimize the user experience and reduce visual distraction, I designed a 
-                responsive infotainment interface in Figma that adapts to driver engagement. 
-                During periods of inactivity, the system transitions into a minimal 
-                "sleep mode," displaying only essential information, like a personalized greeting 
-                and a compact media player. Upon 
-                interaction or while actively driving, the interface awakens into its "active state." 
-                This brings the 3D car model into sharp focus and reveals expanded widgets, navigation, climate controls, 
-                and a central app dock, ensuring full functionality is immediately accessible when needed.
-              </p>
-            </div>
-
-              <div className="bmw-media-wrapper">
-                <img 
-                    src={caruiactive} 
-                    alt="Car UI Active" 
-                    className="bmw-full-width-media"
-                />
-            </div>
-
-            <div className="bmw-text-block">
-              <p>
-                To showcase the vehicle in a dynamic environment, I directed and staged a short 
-                cinematic sequence using Unreal Engine's Sequencer. The animation features 
-                the futuristic BMW concept navigating a winding road through a 
-                snowy mountain landscape. This sequence highlights the car's sleek design and 
-                illuminated features, creating an immersive visual narrative.
-              </p>
-            </div>
-
-            {/* Zweites Video (BMW Sequence) */}
+            {/* 8. Letztes Video (BMW Sequence Drive) */}
             <div className="bmw-media-wrapper">
                 <video 
                     className="bmw-full-width-media" 
@@ -134,7 +164,18 @@ const BMWComponent = () => {
                     <source src={cardrive} type="video/mp4" />
                 </video>
             </div>
-            
+
+            {/* 7. Text: Cinematic Intro */}
+            <div className="bmw-text-block">
+              <p>
+                To showcase the vehicle in a dynamic environment, I directed and staged a short 
+                cinematic sequence using Unreal Engine's Sequencer. The animation features 
+                the futuristic BMW concept navigating a winding road through a 
+                snowy mountain landscape. This sequence highlights the car's sleek design and 
+                illuminated features, creating an immersive visual narrative.
+              </p>
+            </div>
+
           </div>
         </div>
       </div>

@@ -105,7 +105,6 @@
 }
 
 .bmw-container.bmw-expanded .bmw-expanded-details {
-  /* HIER IST DER FIX: Wert auf 6000px erhöht, damit längerer Inhalt nicht mehr abgeschnitten wird */
   max-height: 6000px; 
   opacity: 1;
   margin-top: 60px;
@@ -122,14 +121,15 @@
 
 .bmw-full-width-media {
   width: 100%;
-  display: block; /* Verhindert Lücken unter Bildern/Videos */
+  display: block; 
   border-radius: 8px;
 }
 
-/* --- UI Grid Layout (Zentriert) --- */
+/* --- UI Grid Layout (Zentriert & Side-by-Side) --- */
 .bmw-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 20px; /* Abstand zwischen den beiden Bildern */
   align-items: center;
   justify-items: center;
   width: 100%;
@@ -143,11 +143,11 @@
 
 .bmw-item img {
   width: 100%;
-  max-width: 400px;
+  max-width: 100%; /* Nimmt nun den vollen Platz der Grid-Spalte ein */
   height: auto;
   display: block;
   margin: 0 auto;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
@@ -157,7 +157,7 @@
   line-height: 1.6;
   text-align: left;
   margin-top: 2%;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
   margin-left: 5%;
   margin-right: 5%;
 }
@@ -185,6 +185,6 @@
   }
 
   .bmw-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Auf Handys brechen die beiden Bilder automatisch untereinander um */
   }
 }
